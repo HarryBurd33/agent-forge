@@ -1,0 +1,15 @@
+# Sources and reuse decisions
+
+Reviewed on 2026-10-26 (build user's local date). Original Agent Forge instructions, templates and Python implementation; no upstream source code or substantial prose bundled. Concepts and interoperable field names informed the work. No dependency on these creators or their runtimes.
+
+| Foundation | Actual inspected material | Rights / revision | Decision |
+|---|---|---|---|
+| [Skill Forge](https://github.com/HarryBurd33/skill-forge) | Locally installed SKILL.md, nested Skill Finder, LICENSE and notices | Actual MIT license; local 0.3.1 SKILL.md SHA256 `dfe285a59790d07cdc5a3a88372d6ef5801f5a401d9b5a9e0c24e514dfb480b6`; upstream revision unverified | Reference interview, fixed checks and privacy principles; no runtime dependency |
+| [OpenAI Codex skill-creator](https://github.com/openai/codex/blob/5e32f728f1f86a967c6be057351f12505778df8f/codex-rs/skills/src/assets/samples/skill-creator/SKILL.md) | Actual SKILL.md and root LICENSE at selected revision; moving root NOTICE inspected separately | Apache-2.0; selected file-history revision `5e32f728f1f86a967c6be057351f12505778df8f`, not claimed HEAD | Reference concise entry point, conditional resources and metadata |
+| [Anthropic skill-creator](https://github.com/anthropics/skills/blob/b0cbd3df1533b396d281a6886d5132f623393a9c/skills/skill-creator/SKILL.md) | Actual SKILL.md and skill-local LICENSE.txt at selected revision; moving README separately | Skill-local Apache-2.0; selected file-history revision `b0cbd3df1533b396d281a6886d5132f623393a9c`, not claimed HEAD | Reference comparison/evaluation ideas; reject Claude runtime dependency |
+| [Agent Skills specification](https://agentskills.io/specification) | Actual format page | Page revision and documentation reuse license unverified; no prose copied | Use interoperable folder/SKILL.md format |
+| [Official Codex skills](https://learn.chatgpt.com/docs/build-skills) and [noninteractive execution](https://learn.chatgpt.com/docs/non-interactive-mode) | Opened actual documentation; installed CLI 0.164.0 help separately inspected | Moving documentation; no prose copied | Verify UI display field and launch syntax |
+
+Research method: bounded five-minute source search with GitHub queries for agent skills/playbooks and the named creator repositories; inspected three strongest candidates and actual reuse licenses. GitHub API access failed; file history and immutable URLs recovered revisions. Local Skill Forge upstream fetch was partial, so it remains identified by local hash. Hugging Face was skipped because this instruction/template package needs no model, dataset or Space. No exhaustive coverage claim. A source's public visibility was not treated as permission to copy it.
+
+No ready-made candidate covers the requested playbook, inventory, bounded execution and verified registration cycle. The smallest useful implementation is original Markdown/JSON plus a standard-library scaffolding/audit helper. If later code/text is adopted from a source, retain its applicable license/notices and mark modifications; this package's MIT license cannot relicense upstream material.

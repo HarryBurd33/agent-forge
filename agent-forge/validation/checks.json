@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-26",
+  "python": "3.15.0",
+  "generic_skill_validator": {
+    "status": "pass",
+    "name": "agent-forge",
+    "profile": "generic",
+    "files": 17,
+    "relative_links": 16,
+    "questions": 0,
+    "limitations": "Checks supported frontmatter fields and file links, not full YAML, native host acceptance or semantic quality."
+  },
+  "source_json_and_python_syntax": "pass",
+  "display_name_and_prompt": "pass",
+  "hardcoded_private_user_paths": "none found",
+  "extracted_package_unit_tests": {
+    "status": "pass",
+    "count": 14,
+    "stdout": "",
+    "stderr": "test_claimed_registration_requires_receipt (test_forge.ForgeTests.test_claimed_registration_requires_receipt) ... ok\ntest_destination_traversal_and_symlink_refused (test_forge.ForgeTests.test_destination_traversal_and_symlink_refused) ... ok\ntest_duplicate_ids_cycles_and_unknown_steps (test_forge.ForgeTests.test_duplicate_ids_cycles_and_unknown_steps) ... ok\ntest_existing_destination_is_preserved (test_forge.ForgeTests.test_existing_destination_is_preserved) ... ok\ntest_explicit_zero_is_valid_missing_and_boolean_are_not (test_forge.ForgeTests.test_explicit_zero_is_valid_missing_and_boolean_are_not) ... ok\ntest_external_references_are_explicit_not_fetched (test_forge.ForgeTests.test_external_references_are_explicit_not_fetched) ... ok\ntest_find_actual_contract_metadata (test_forge.ForgeTests.test_find_actual_contract_metadata) ... ok\ntest_fresh_draft_audit_but_not_ready (test_forge.ForgeTests.test_fresh_draft_audit_but_not_ready) ... ok\ntest_local_resource_escape_and_credential_paths (test_forge.ForgeTests.test_local_resource_escape_and_credential_paths) ... ok\ntest_malformed_json_and_types_fail_as_json (test_forge.ForgeTests.test_malformed_json_and_types_fail_as_json) ... ok\ntest_missing_resource_unindexed_output_and_missing_evidence (test_forge.ForgeTests.test_missing_resource_unindexed_output_and_missing_evidence) ... ok\ntest_nested_durable_directory_cannot_escape_inventory (test_forge.ForgeTests.test_nested_durable_directory_cannot_escape_inventory) ... ok\ntest_ready_markers_pass_but_are_not_task_quality_evidence (test_forge.ForgeTests.test_ready_markers_pass_but_are_not_task_quality_evidence) ... ok\ntest_temporary_dirs_do_not_hide_durable_outputs (test_forge.ForgeTests.test_temporary_dirs_do_not_hide_durable_outputs) ... ok\n\n----------------------------------------------------------------------\nRan 14 tests in 2.863s\n\nOK\n"
+  },
+  "extracted_project_smoke": {
+    "init": "draft created",
+    "audit": "structural pass",
+    "ready": "correctly refused draft",
+    "find": "playbook found"
+  },
+  "privacy_inventory": "skill files only; no private task state, raw model records, outputs or caches"
+}

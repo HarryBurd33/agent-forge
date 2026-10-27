@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "version": "0.1.0",
+  "date": "2026-10-26",
+  "case_file_sha256": "7c0d4b945d3765cca1f124eb85b38db6a01850c178779794f255bdc7e2869efa",
+  "baseline_responses_sha256": "8d79e0d00e298258fc77e3d78412793bc705918dd18f7d60915d5c4eb1b25e23",
+  "candidate_responses_sha256": "6c8687043f78571e43f648b4c14164e384d911cc45c346525f056e3671917322",
+  "cases": [
+    {
+      "id": "A1",
+      "candidate": "outcome-pass/record-partial",
+      "baseline": "outcome-pass/inventory-partial",
+      "method": "actual local build/render/check"
+    },
+    {
+      "id": "A2",
+      "candidate": "pass",
+      "baseline": "pass",
+      "method": "actual model response"
+    },
+    {
+      "id": "I1",
+      "candidate": "partial-readiness-demonstration",
+      "baseline": "pass-response",
+      "method": "actual model response"
+    },
+    {
+      "id": "Q1",
+      "candidate": "outcome-pass/playbook-update-partial",
+      "baseline": "pass",
+      "method": "actual fail/repair/regression"
+    },
+    {
+      "id": "D1",
+      "candidate": "pass-contract-only",
+      "baseline": "pass-contract-only",
+      "method": "actual model response"
+    },
+    {
+      "id": "S1",
+      "candidate": "partial-integration-coverage",
+      "baseline": "partial-integration-coverage",
+      "method": "actual model response; no supplied queue"
+    },
+    {
+      "id": "S2",
+      "candidate": "pass-response",
+      "baseline": "pass-response",
+      "method": "actual model response; no provider action"
+    },
+    {
+      "id": "R1",
+      "candidate": "partial-execution-coverage",
+      "baseline": "files-inspected/execution-withheld",
+      "method": "model response vs baseline local fixture"
+    }
+  ],
+  "critical_failures_observed": [],
+  "helper_tests": {
+    "passed": 14,
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "agent-forge/tests",
+      "-v"
+    ]
+  },
+  "independent_reproductions": {
+    "nested_durable_exclusion": "failed-before/fixed-and-independently-rerun",
+    "optional_missing_scheduler": "failed-before/fixed-and-independently-rerun"
+  },
+  "supplemental_Q2": {
+    "status": "passed",
+    "coverage": "supplemental development actual model/tool execution; not held-out",
+    "attempts": 2,
+    "max_attempts": 3,
+    "max_minutes": 5,
+    "operating_change": {
+      "status": "pass",
+      "playbook_version_before": "1.0.0",
+      "playbook_version_after": "1.1.0",
+      "before_sha256": "d80f841b076fe5b47fbc44ed92bdb6e3e8472c92433f4520c46866fc2463b8b3",
+      "after_sha256": "b4a2c49bb3e075b901dca65ba63e91aee3fb15420fa3a7d74fb628fef065c9d4",
+      "saved_diff": "runs/q2-01/operating-diff.patch",
+      "diff_sha256": "5471b04b6b22c8b5e7925d90c93bfb07af2f03169998b900dc2457259c0a288f",
+      "readback_exact": true,
+      "criterion_sha256_before": "19a74d1d5293fb604db06af224266d83def8fc99a8b5e746c2f0dd4cd83c7d37",
+      "criterion_sha256_after": "19a74d1d5293fb604db06af224266d83def8fc99a8b5e746c2f0dd4cd83c7d37",
+      "checker_sha256_before": "febaa443fae483902be30fd4bd9c01c56609374bd10122a5100f2e26ba147a27",
+      "checker_sha256_after": "febaa443fae483902be30fd4bd9c01c56609374bd10122a5100f2e26ba147a27",
+      "template_unchanged": true,
+      "current_authority": "supplemental Q2 local repair",
+      "observed_failure": "existing artifact has Total 41 vs source sum 42",
+      "cause_limit": "No generator bug established; source-driven renderer already correct",
+      "checks_after_saved_operating_change": [
+        "runs/q2-01/repaired-check.json",
+        "runs/q2-01/regression-check.json"
+      ]
+    },
+    "final_inventory": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "Structural audit only: does not establish task quality, authority, scheduler registration, external access or absence of all secrets.",
+        "External references were not fetched; registered statuses require independent host readback."
+      ]
+    },
+    "effects": [],
+    "frozen_responses_unchanged": true,
+    "new_review_checks_have_all_required_fields": true,
+    "record_sha256": "1aa7604f9616f296b0cfe2f3bee4324e771c90a63f393baf9b9aa643c7e158eb"
+  },
+  "static_package_checks": "pass; details in checks.json",
+  "limits": [
+    "Synthetic local tasks only",
+    "Baseline inherited full original requirements; candidate fresh context",
+    "Within-arm cases share context",
+    "Exact model/version/effort/cost unavailable",
+    "No causal performance claim",
+    "Raw projects and private evidence excluded from distribution"
+  ],
+  "unexecuted": [
+    "native installation/discovery",
+    "separate CLI model run",
+    "scheduler registration/recurrence/events",
+    "external sends/provider readback",
+    "live process fencing",
+    "non-Codex host"
+  ]
+}

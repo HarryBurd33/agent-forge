@@ -1,0 +1,6 @@
+interface:
+  display_name: "Agent Forge"
+  short_description: "Build task agents from playbooks and verified runs"
+  default_prompt: "Use $agent-forge to turn my working method into a bounded, verifiable agent."
+policy:
+  allow_implicit_invocation: true

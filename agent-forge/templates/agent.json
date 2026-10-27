@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "project_id": "PROJECT_ID",
+  "status": "draft",
+  "instructions": "AGENT.md",
+  "playbook": "PLAYBOOK.md",
+  "toolbox": "toolbox/index.json",
+  "execution": {
+    "mode": null,
+    "trigger": null,
+    "timezone": null,
+    "dependencies": [],
+    "ordering": "serial",
+    "overlap_policy": "skip",
+    "retry_policy": "reconcile-before-retry",
+    "stop_conditions": ["authority missing", "budget exhausted", "outcome uncertain", "required check unavailable"],
+    "notification": null,
+    "registration": {"provider": null, "id": null, "status": "unregistered", "verified_at": null, "evidence": []}
+  },
+  "bounds": {"max_attempts": 3, "max_minutes": 30, "max_depth": 1, "max_concurrency": 2, "max_workers": 2, "max_cost_usd": null},
+  "capabilities": {"required": ["artifact-read-write", "resource-search", "outcome-validation"], "optional": [], "observed": [], "missing": []},
+  "authority": {"source": null, "allowed": [], "escalate": [], "external_actions": []},
+  "retention": {"temporary_dirs": ["scratch", "logs"], "temporary_days": 7, "durable": "retain until explicitly superseded or user policy permits removal"}
+}

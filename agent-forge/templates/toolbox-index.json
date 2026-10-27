@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "project_id": "PROJECT_ID",
+  "resources": [
+    {"id":"instructions","purpose":"Task runner instructions","kind":"instructions","location":"AGENT.md","version":"0.1.0","input_contract":"Current task and authorization","output_contract":"Bounded verified run or explicit partial report","dependencies":["playbook","config","toolbox-index"],"status":"draft","used_by":["step-01"],"validation":{"method":"independent contract inspection","evidence":[]},"replaces":null,"reuse_decision":"Initial project seed"},
+    {"id":"playbook","purpose":"Task operating source of truth","kind":"playbook","location":"PLAYBOOK.md","version":"0.1.0","input_contract":"Method, examples and fixed completion criteria","output_contract":"Explicit procedure, exceptions and escalation","dependencies":[],"status":"draft","used_by":["step-01","check-01"],"validation":{"method":"teach-back and representative case","evidence":[]},"replaces":null,"reuse_decision":"Initial project seed"},
+    {"id":"config","purpose":"Execution configuration and limits","kind":"configuration","location":"agent.json","version":"0.1.0","input_contract":"Current authority and observed capabilities","output_contract":"Configuration, never an execution receipt","dependencies":[],"status":"draft","used_by":["step-01"],"validation":{"method":"host and authority inspection","evidence":[]},"replaces":null,"reuse_decision":"Initial project seed"},
+    {"id":"toolbox-index","purpose":"Inventory of all durable project resources","kind":"index","location":"toolbox/index.json","version":"0.1.0","input_contract":"Existing and new durable resources","output_contract":"Searchable metadata and explicit external references","dependencies":[],"status":"draft","used_by":["step-01"],"validation":{"method":"inventory audit","evidence":[]},"replaces":null,"reuse_decision":"Initial project seed"}
+  ]
+}

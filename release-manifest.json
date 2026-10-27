@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "files": {
+    ".github/workflows/ci.yml": "c9e1f54dbbb2b6cad3b2fdbda0fa559490d99afa5fbc6f8083bb3e8c20c65352",
+    ".gitignore": "03473712b5f250a3294aabd77fd8eefeccf49b28b80dae233b288aaf30d48fd6",
+    "LICENSE": "1e3aeed264554c5e05a20db04acf75fa94a1015384a7ec971db7ec240eb3eb6f",
+    "README.md": "e60fc73a99333d781b85f0ee5235506cef59c0f5aa1c1e83884431338fc63a25",
+    "VERIFICATION.md": "5dda9d473bc16ca2d785d2aff5c087e20cd245eb5339e2bbe4ceda1b5c08d0c1",
+    "agent-forge/LICENSE": "1e3aeed264554c5e05a20db04acf75fa94a1015384a7ec971db7ec240eb3eb6f",
+    "agent-forge/README.md": "dd794130fd1367ec1fb39f56ff7b5101be3e54bf0b996a948fe60c3ff31839bc",
+    "agent-forge/SKILL.md": "a166e5101ec2d21371425bb8422824defedbbc49ebb554dcdf658c00b628b61f",
+    "agent-forge/SOURCES.md": "2a27505b6d3facce474238b7eb0d4301eb2cdbea546b76af2790619d056250a2",
+    "agent-forge/agents/openai.yaml": "e1e790aeeb24da3cf813c88ce3f4e10caef9b195e4b5bfda6f1781688d5ebbd9",
+    "agent-forge/references/codex.md": "30b43ab95925a0db87b43d75c65eea46b64b36a32ebaad5eea5e696e593e7ee1",
+    "agent-forge/references/contracts.md": "65bcebb3a3e44ce97b0ef98422582de14d0a4ccf5c7d531b1e66bcbbb6998362",
+    "agent-forge/references/examples.md": "fb3afc020e6c708872e204bc91e4136c079e897fa6855062af49c7a688feb3c0",
+    "agent-forge/scripts/forge.py": "3ab4603e07ba804721b0fd1f7777223e32e77cb58ad8f88a311c4bdfb43f8055",
+    "agent-forge/templates/AGENT.md": "79c6b9ff019e270e0c90bc124b2de6cec6749aed86d2ccd56c3a1e80dd49a07d",
+    "agent-forge/templates/PLAYBOOK.md": "673ec0881ebaf5a18762d770845f93e9af1fd0cb1e1231ecefa55672d807717d",
+    "agent-forge/templates/agent.json": "838af4a116637cf346619d85e25ed8678b0d02fb13a94e21d8f28498d0be4d97",
+    "agent-forge/templates/run-review.json": "7554fc3e84ff40d0716edfc41e94daa3293ad5a7593c0459bc8b6c38dd4c3919",
+    "agent-forge/templates/toolbox-index.json": "9ebf242c35f363bc08d51003872f0ca7f0c10986604e65eb458fd30e37a62f00",
+    "agent-forge/tests/test_forge.py": "611e1ffba59ff0289f8d437109becc96bd474919c372aad038326759492cd116",
+    "agent-forge/validation/MANIFEST.json": "e94522cfe1663ae85c69554bb254d72766561553c588d3a746c5aadcc0606c05",
+    "agent-forge/validation/REPORT.md": "baf8374d219a4448dc8f7d82b785028393ce916be5b98207887225b3687a5cfb",
+    "agent-forge/validation/checks.json": "17787f36befa63573be7b5d4523161f39694697c3d5b0fe49a4958874e6563dc",
+    "agent-forge/validation/results.json": "deba58907d12baa5b775a694d97701e01a850be6e893259237079557c8d09685",
+    "scripts/verify_release.py": "a658665ee0281ba5a955110d9bb277cfb35d4fbd0e1bb9846690af6792045db6",
+    "tests/test_workflow.py": "3e28b0d21409b997e781d58cacd27743ba196f01ad2ed75498278249dddd0a84"
+  }
+}
