@@ -62,7 +62,7 @@ Projects and private interview records belong outside the reusable skill. Creden
 |---|---|---|
 | Task interview and playbook/package creation | Skill instructions, templates and actual local model examples | Domain judgments still need suitable examples and checks |
 | Resource search and reuse | `find`, toolbox contract, repeated-template workflow test | The model must inspect whether a match fits |
-| Local scaffolding and audit | Python standard-library CLI, unit tests, manifest/link verification | Structural checks cannot prove arbitrary domain correctness |
+| Local scaffolding and audit | Python standard-library CLI, unit tests, manifest/link verification | Explicit SHA-256 pins catch local source/evidence drift; unpinned and external sources still need runner checks, and hashes do not prove correctness |
 | Check/fix/update/rerun | Actual model repair example and reproducible local workflow test | Bounded attempts; no guarantee every task can be repaired |
 | Delegation | Child contracts, shared limits and parent review instructions | Needs host orchestration; instructions alone do not fence tools or concurrent processes |
 | Scheduling/events/queues | Configuration and registration/readback procedure | Requires supported authorized host integration; no scheduler bundled |

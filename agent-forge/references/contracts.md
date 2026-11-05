@@ -26,7 +26,8 @@ Execution `mode` is null until established, then `manual`, `one_time`, `recurrin
 - `location`: unique local file path or explicit external URI; `version`: actual version/hash/provider revision, not a guessed version.
 - `input_contract`, `output_contract`: nonempty text, or explicit "not applicable" with reason for passive documents.
 - `dependencies`: resource ID array; all IDs must exist; no self dependency or dependency cycles.
-- `status`: draft / validated / retired. `validation`: method and evidence location array. Validated requires nonempty method and evidence; evidence must exist locally or be an explicit external URI. The model independently inspects whether evidence supports the claim.
+- `status`: draft / validated / retired. `validation`: method and evidence location array; validated requires nonempty method and evidence. Evidence must exist locally or be an explicit external URI. The model independently inspects whether evidence supports the claim.
+- Optional `validation.bindings` pins local source/evidence files whose byte identity matters. Each item has `role` (`source` or `evidence`), project-relative `location`, and a 64-character hexadecimal `sha256`. Evidence bindings must also appear in that resource's `validation.evidence` list. The audit streams and hashes only these explicitly listed local files, failing when current bytes differ. Omitting `bindings` preserves version-1 projects. A matching hash proves only that bytes match the recorded pin; it does not prove the pin is authoritative/current or that an outcome is correct. External references are not fetched or freshness-checked and still need current provider-version/readback and independent outcome checks.
 - `used_by`: nonempty stable step/check ID array found in PLAYBOOK.md (e.g. step-01/check-01).
 - `replaces`: prior resource ID or null; retain the prior entry and version. `reuse_decision`: searched matches and why reused/adapted/new/replaced.
 

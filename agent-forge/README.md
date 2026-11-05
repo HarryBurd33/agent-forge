@@ -1,6 +1,6 @@
 # Agent Forge
 
-Build a task agent from a working method: interview selectively, capture a playbook, reuse an indexed toolbox, configure execution and verify results. The reusable skill is `agent-forge`; its Codex display name is **Agent Forge**. Version 0.1.0.
+Build a task agent from a working method: interview selectively, capture a playbook, reuse an indexed toolbox, configure execution and verify results. The reusable skill is `agent-forge`; its Codex display name is **Agent Forge**. Version 0.2.0.
 
 This folder is the reviewable skill package. Task-specific projects, private interview notes, checkpoints and generated business outputs belong elsewhere.
 
@@ -33,7 +33,7 @@ python3 /absolute/path/to/agent-forge/scripts/forge.py audit /absolute/path/to/r
 python3 /absolute/path/to/agent-forge/scripts/forge.py audit /absolute/path/to/report-agent --ready
 ```
 
-The destination's parent must exist. Initialization refuses an existing destination and creates a draft; mode and authority remain unset. Fill the playbook and configuration, teach back and dry-run the method, define fixed outcome checks and inspect evidence before treating the agent as ready. Structural audit can pass while an outcome is wrong. `--ready` checks markers and evidence references, not the truth of arbitrary domain claims.
+The destination's parent must exist. Initialization refuses an existing destination and creates a draft; mode and authority remain unset. Fill the playbook and configuration, teach back and dry-run the method, define fixed outcome checks and inspect evidence before treating the agent as ready. Optionally pin local source/evidence bytes with `validation.bindings` entries; audit checks those hashes but cannot prove the pins are authoritative/current. Structural audit can pass while an outcome is wrong. `--ready` checks markers and evidence references, not the truth of arbitrary domain claims.
 
 The generated project contains AGENT.md, PLAYBOOK.md, agent.json and toolbox/index.json. Copy the run/review template into the project's run directory when planning execution and index it. See [contracts](references/contracts.md) for fields, path rules and statuses. Index every durable output separately from reusable templates. Preserve credentials outside the project and private task data outside this skill distribution.
 

@@ -1,5 +1,6 @@
 """Executed CLI contract checks, not model/task-quality tests."""
 import copy
+import hashlib
 import json
 from pathlib import Path
 import subprocess
@@ -73,6 +74,54 @@ class ForgeTests(unittest.TestCase):
         index["resources"][0]["validation"]["evidence"] = ["missing.txt"]
         self.write("toolbox/index.json", index)
         self.call("audit", self.project, ok=False)
+
+    def test_legacy_index_without_freshness_bindings_remains_compatible(self):
+        index = self.read("toolbox/index.json")
+        for entry in index["resources"]:
+            entry["validation"].pop("bindings", None)
+        self.write("toolbox/index.json", index)
+        self.call("audit", self.project)
+
+    def test_freshness_bindings_accept_unchanged_and_reject_stale_source_and_evidence(self):
+        index = self.read("toolbox/index.json")
+        entry = index["resources"][0]
+        source = self.project / "AGENT.md"
+        evidence = self.project / "PLAYBOOK.md"
+        original_source = source.read_text()
+        original_evidence = evidence.read_text()
+        entry["validation"]["evidence"] = ["PLAYBOOK.md"]
+        entry["validation"]["bindings"] = [
+            {"role": "source", "location": "AGENT.md", "sha256": hashlib.sha256(source.read_bytes()).hexdigest()},
+            {"role": "evidence", "location": "PLAYBOOK.md", "sha256": hashlib.sha256(evidence.read_bytes()).hexdigest()},
+        ]
+        self.write("toolbox/index.json", index)
+        self.call("audit", self.project)
+
+        source.write_text(original_source + "\nchanged source\n")
+        result = self.call("audit", self.project, ok=False)
+        self.assertTrue(any("stale source binding AGENT.md" in error for error in result["errors"]))
+        source.write_text(original_source)
+
+        evidence.write_text(original_evidence + "\nchanged evidence\n")
+        result = self.call("audit", self.project, ok=False)
+        self.assertTrue(any("stale evidence binding PLAYBOOK.md" in error for error in result["errors"]))
+
+    def test_freshness_bindings_reject_bad_digests_and_unlisted_evidence(self):
+        index = self.read("toolbox/index.json")
+        entry = index["resources"][0]
+        evidence_sha = hashlib.sha256((self.project / "AGENT.md").read_bytes()).hexdigest()
+        entry["validation"]["evidence"] = ["PLAYBOOK.md"]
+        entry["validation"]["bindings"] = [
+            {"role": "evidence", "location": "AGENT.md", "sha256": evidence_sha}
+        ]
+        self.write("toolbox/index.json", index)
+        result = self.call("audit", self.project, ok=False)
+        self.assertTrue(any("evidence binding must appear in validation.evidence" in error for error in result["errors"]))
+
+        entry["validation"]["bindings"][0]["sha256"] = "not-a-hash"
+        self.write("toolbox/index.json", index)
+        result = self.call("audit", self.project, ok=False)
+        self.assertTrue(any("binding sha256 must be 64 hexadecimal characters" in error for error in result["errors"]))
 
     def test_local_resource_escape_and_credential_paths(self):
         index = self.read("toolbox/index.json")

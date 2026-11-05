@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Seed, search and structurally audit Agent Forge projects. No task execution."""
 import argparse
+import hashlib
 import json
 import math
 from pathlib import Path, PurePosixPath
@@ -44,6 +45,14 @@ def number(value, minimum=0, positive=False):
 def read_json(path):
     with path.open(encoding="utf-8") as handle:
         return json.load(handle, parse_constant=lambda value: (_ for _ in ()).throw(Invalid("nonfinite JSON number: " + value)))
+
+
+def file_sha256(path):
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 def credential_path(parts):
@@ -199,6 +208,32 @@ def audit(root, ready=False):
                 require(bool(validation["evidence"]), ident + ": validated resource needs evidence")
             for ref in validation["evidence"]:
                 location(root, ref)
+            bindings = validation.get("bindings", [])
+            require(isinstance(bindings, list), ident + ": validation.bindings must be an array")
+            seen_bindings = set()
+            evidence_paths = set()
+            for ref in validation["evidence"]:
+                evidence_path = location(root, ref)
+                if evidence_path is not None:
+                    evidence_paths.add(str(evidence_path.resolve()))
+            for binding in bindings:
+                object_fields(binding, ("role", "location", "sha256"), ident + " freshness binding")
+                role, bound_location, expected = binding["role"], binding["location"], binding["sha256"]
+                require(role in ("source", "evidence"), ident + ": binding role must be source or evidence")
+                require(text(expected) and bool(re.fullmatch(r"[0-9a-fA-F]{64}", expected)),
+                        ident + ": binding sha256 must be 64 hexadecimal characters")
+                bound_path = local_path(root, bound_location)
+                normalized = str(bound_path.resolve())
+                key = (role, normalized)
+                require(key not in seen_bindings, ident + ": duplicate freshness binding: " + bound_location)
+                seen_bindings.add(key)
+                if role == "evidence":
+                    require(normalized in evidence_paths,
+                            ident + ": evidence binding must appear in validation.evidence: " + bound_location)
+                actual = file_sha256(bound_path)
+                require(actual.casefold() == expected.casefold(),
+                        ident + ": stale " + role + " binding " + bound_location
+                        + " (expected sha256 " + expected.casefold() + ", observed " + actual + ")")
             require(entry["replaces"] is None or text(entry["replaces"]), ident + ": replaces must be null or resource ID")
             ids[ident] = entry
             graph[ident] = entry["dependencies"]

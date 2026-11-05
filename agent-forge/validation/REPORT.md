@@ -25,13 +25,13 @@ Comparison limits: baseline executor inherited the full original requirements an
 
 ## Independent findings and corrections
 
-Two helper bugs were reproduced independently. A temporary exclusion `outputs/reports` hid an unindexed durable file; the fix rejects protected durable roots and descendants. Missing optional scheduler access incorrectly blocked a ready manual project; the fix warns about optional absence while required/undeclared missing support still blocks. Original held-out fixtures were rerun independently: the first now fails audit, the second passes with the optional warning. The helper never claimed domain/content validation; an independently observed stale input hash still passes structural audit and requires actual source-version/outcome checks by the runner.
+Two helper bugs were reproduced independently. A temporary exclusion `outputs/reports` hid an unindexed durable file; the fix rejects protected durable roots and descendants. Missing optional scheduler access incorrectly blocked a ready manual project; the fix warns about optional absence while required/undeclared missing support still blocks. Original held-out fixtures were rerun independently: the first now fails audit, the second passes with the optional warning. At the 0.1.0 validation point, the helper did not compare source-version hashes; an independently observed stale input hash passed structural audit. This was a documented capability boundary, not evidence stale work was used. The 0.2.0 follow-up below adds opt-in local source/evidence hash bindings while preserving the limits on external version and outcome verification.
 
 The initial candidate ran before two supporting references were written. It accurately reported the missing files. Both now exist and were independently inspected. Historical outputs retain the limitation. Initial A1 run-record field omissions and Q1 review-only learning prompted explicit saved-playbook/diff and per-check field inspection instructions. Supplemental execution is reported separately rather than rewriting initial results.
 
 ## Executed deterministic checks
 
-The helper suite currently has **14 passing CLI tests**: initialization and preservation, traversal/symlink handling, real index retrieval, missing files/unindexed outputs/missing evidence, explicit zero versus absent/invalid limits, ID/dependency/step errors, explicit external references, temporary-root and nested-root inventory protection, claimed registration receipts, draft versus readiness markers, optional versus required missing capabilities and malformed JSON/types. Tests verify the helper's local contract; they do not establish arbitrary outcome quality, credentials absence, scheduler truth or live host enforcement.
+The helper suite at the 0.1.0 validation point had **14 passing CLI tests**: initialization and preservation, traversal/symlink handling, real index retrieval, missing files/unindexed outputs/missing evidence, explicit zero versus absent/invalid limits, ID/dependency/step errors, explicit external references, temporary-root and nested-root inventory protection, claimed registration receipts, draft versus readiness markers, optional versus required missing capabilities and malformed JSON/types. Tests verify the helper's local contract; they do not establish arbitrary outcome quality, credentials absence, scheduler truth or live host enforcement.
 
 Commands:
 
@@ -50,4 +50,12 @@ Q2 is a separately frozen development supplement using an existing concrete manu
 
 ## Unexecuted live checks
 
-Global installation/native discovery; a separate CLI model task; real scheduler registration or recurring/event delivery; actual domain connector work; external messaging/provider reconciliation; live overlapping process fencing; non-Codex host execution. No artifact or descriptive schedule supplies these capabilities or their authorization. Python 3.9 is the declared minimum; tests ran on the available Python interpreter, not every supported release.
+Global installation/native discovery; a separate CLI model task; real scheduler registration or recurring/event delivery; actual domain connector work; external messaging/provider reconciliation; live overlapping process fencing; non-Codex host execution. No artifact or descriptive schedule supplies these capabilities or their authorization. Python 3.9 is the declared minimum; the original tests ran on the then-available interpreter, not every supported release.
+
+## Local freshness-binding follow-up — 2026-11-05
+
+Version 0.2.0 adds an optional `validation.bindings` array to toolbox resources. A binding identifies a local `source` or `evidence` path and its SHA-256 digest. The structural audit hashes only the explicitly bound files and fails if their current bytes differ; evidence bindings must also appear in that resource's evidence list. Existing version-1 indexes without bindings remain valid.
+
+All **17 helper tests passed** on Python 3.15.0. New controls cover a legacy index without bindings, unchanged source/evidence hashes, changed source and evidence content, malformed digests, and evidence bindings not listed as evidence. These are deterministic local helper checks; no model was run for this follow-up.
+
+The check does not infer bindings or verify when/how a hash was recorded. A matching hash establishes byte equality to the supplied pin, not that the pinned content came from the current authoritative source or supports the claimed outcome. External references are not fetched or freshness-checked. The runner still needs current provider/source-version readback and independent outcome checks. No evidence here establishes that stale work was used before this change.

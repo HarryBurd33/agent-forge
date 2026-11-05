@@ -3,7 +3,7 @@ name: agent-forge
 description: Build or repair task agents from a user's working method: interview, create an executable playbook and indexed toolbox, configure bounded execution or requested automation, and verify results. Use for explicit agent-building, agent automation, delegation or Agent Forge project changes. Do not turn ordinary task requests or incidental mentions of agents into a building interview.
 license: MIT
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
 ---
 
 # Agent Forge
@@ -34,7 +34,7 @@ Create task projects outside this reusable folder, or extend the existing projec
 - [toolbox index](templates/toolbox-index.json): every durable resource or explicit storage reference.
 - [run/review record](templates/run-review.json): frozen criteria, execution, observations, repair, regressions and uncertainty.
 
-With Python 3.9+, `scripts/forge.py init NEW_PATH --project-id task-slug` scaffolds a **draft** and refuses any existing destination. The helper is optional, uses only the standard library and does not launch tasks or jobs. `find PROJECT --query TEXT` searches the index; `audit PROJECT` checks structure/inventory and `audit PROJECT --ready` adds readiness checks. Audit cannot prove task quality or actual authorization. Without Python, create equivalent artifacts manually and inspect the contracts; report unexecuted helper checks.
+With Python 3.9+, `scripts/forge.py init NEW_PATH --project-id task-slug` scaffolds a **draft** and refuses any existing destination. The helper is optional, uses only the standard library and does not launch tasks or jobs. `find PROJECT --query TEXT` searches the index; `audit PROJECT` checks structure/inventory and any declared freshness bindings; `audit PROJECT --ready` adds readiness checks. Audit cannot prove task quality or actual authorization. For local source/evidence files whose byte identity matters, record an optional SHA-256 binding as described in [project contracts](references/contracts.md); audit checks only files explicitly pinned this way. A matching hash does not prove that the pinned source is authoritative or current. External references still need independent current-version/readback and outcome checks. Without Python, create equivalent artifacts manually and inspect the contracts; report unexecuted helper checks.
 
 Before creating **each** durable file, script, template or document, search the toolbox and inspect relevant matches. Reuse or adapt a suitable item. Record why a new version/replacement is necessary if unsuitable; retain provenance and preserve customizations. "Never make the same thing again" means mandatory search and reuse, with justified regeneration still possible. Keep reusable templates distinct from individual outputs. Every durable asset—including task outputs, evidence and review records—needs purpose, location, version, contracts where relevant, dependencies, validation status and linked step/check IDs. Mark draft versus validated. External locations need explicit references and access/version checks. Credentials stay outside the toolbox. Define temporary/log retention; do not quietly classify durable outputs as disposable.
 
