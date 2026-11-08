@@ -5,7 +5,7 @@
 
 A reusable Codex skill that turns a working method into a task agent: focused interview → playbook → reusable toolbox → bounded run → check → fix → saved playbook update → rerun.
 
-Version 0.3.0 selects a direct reusable prompt/tool call, a fixed workflow, or an observation-driven agent from task evidence. Known branch tables can remain fixed workflows. Full projects are created when useful.
+Version 0.3.1 selects a direct reusable prompt/tool call, a fixed workflow, or an observation-driven agent from task evidence. Known branch tables can remain fixed workflows. Full projects are created when useful.
 
 Agent Forge creates and maintains concrete agent projects. It uses the host's tools and current authorization for execution. Its Python helper scaffolds, searches and audits local artifacts. Scheduling and persistent execution require a supported host integration.
 
@@ -67,8 +67,8 @@ Projects and private interview records belong outside the reusable skill. Creden
 | Run-record conformance | `audit-run` compares complete checks with separately pinned criteria; 25 helper tests cover current helper behavior | Conformance does not prove evidence truth or domain correctness |
 | Local scaffolding and audit | Python standard-library CLI, unit tests, manifest/link verification | Structural checks cannot prove arbitrary domain correctness |
 | Check/fix/update/rerun | Actual model repair example and reproducible local workflow test | Bounded attempts; no guarantee every task can be repaired |
-| Delegation | Child contracts, shared limits and parent review instructions | Needs host orchestration; instructions alone do not fence tools or concurrent processes |
-| Scheduling/events/queues | Configuration and registration/readback procedure | Requires supported authorized host integration; no scheduler bundled |
+| Delegation | Child contracts plus two actual child roles, one bounded retry and reviewed integration | Needs host orchestration; instructions alone do not fence tools or concurrent processes |
+| Scheduling/events/queues | Configuration plus two observed native timer deliveries and cleanup; event integration unavailable on the tested host | Requires supported authorized host integration; no scheduler bundled |
 | Persistent execution and external actions | Host-provided runtime and connectors | No daemon, cross-process lock or external service included |
 
 [Validation evidence](agent-forge/validation/REPORT.md) distinguishes actual model/tool runs, deterministic tests, authored examples and unexecuted live integrations. Synthetic tests demonstrate specific behavior; they do not establish universal reliability.
@@ -99,3 +99,6 @@ GitHub CI runs these commands on Python 3.9, 3.12 and 3.14. The workflow test ex
 The 0.3.0 actual generated-solution comparison demonstrated a narrow improvement: repair used the task-required renderer after a failed check, where the 0.2.0 baseline directly rewrote its output. Both produced correct totals. Other synthetic behaviors and the unseen-observation regression passed in both arms; no broad reliability or efficiency gain is claimed.
 
 The published repository is exported from an explicit file allowlist. It contains no private build history, raw interview/model logs, task checkpoint database or generated business outputs. [Sources and reuse decisions](agent-forge/SOURCES.md) record the inspected foundations. Original code and instructions are under the [MIT License](LICENSE).
+## 0.3.1 verified reuse update
+
+Reusing a project now includes checking every active saved source/output/evidence reference and executing an authorized bounded follow-up from the saved procedure. The new comparison caught an old checker path despite a correct report, then verified the next changed-input run against the new output. Additional actual interviews, child tasks, local recovery paths and fresh CLI invocation strengthen evidence for existing behavior. Read the validation report for precise automation status and host limits; this is not an autonomous runtime or bundled scheduler.

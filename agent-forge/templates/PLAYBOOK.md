@@ -10,7 +10,7 @@ REPLACE: outcome, audience, trigger, included work, explicit exclusions and proj
 
 ## Inputs and outputs
 
-REPLACE: required/optional inputs, source/version/freshness, exact output format, destination, privacy, missing vs valid empty/zero values. Name reusable templates separately from each run's outputs.
+REPLACE: required/optional inputs, source/version/freshness, exact output format, destination, privacy, missing vs valid empty/zero values. Name reusable templates separately from each run's outputs. REPLACE: define this run's source/version, output, run key, acceptance snapshot, evidence and review locations, or a clear per-run binding procedure. Use the same current bindings in every active step, invocation and completion check; label historical examples/receipts explicitly.
 
 ## Approach and complexity
 
@@ -24,7 +24,7 @@ REPLACE: required vs optional capabilities, observed host support, setup, depend
 
 ### step-01 — Inspect and prepare
 
-Read this playbook, agent.json and toolbox/index.json; inspect applicable policies, existing queues, prior run keys and uncertain outcomes. Verify current authorization. Search and inspect existing resources before creating anything. REPLACE: task preparation and input checks.
+Read this playbook, agent.json and toolbox/index.json; inspect applicable policies, existing queues, prior run keys and uncertain outcomes. Verify current authorization. Search and inspect existing resources before creating anything. Reconcile all active source/output/run/evidence references across this procedure, its invocation and completion checks before execution; preserve labeled history. REPLACE: task preparation and input checks.
 
 ### step-02 — Perform the bounded task
 
@@ -32,7 +32,7 @@ REPLACE: ordered task method, calculations, judgment rules, tools, branches, res
 
 ### step-03 — Check, repair and deliver
 
-Run the frozen outcome checks below. Record observed evidence; diagnose and fix failed work within the shared limits. Save a demonstrated reusable lesson into this operating playbook or the affected toolbox resource, verify the saved version/diff, preserve the old criteria, rerun affected checks and regressions, then deliver verified results or a labeled partial/failure report. A review record alone is not an updated playbook.
+Run the frozen outcome checks below. Record observed evidence; diagnose and fix failed work within the shared limits. Save a demonstrated reusable lesson into this operating playbook or the affected toolbox resource, verify the saved version/diff and read back the full affected procedure, invocation and completion-check references. Preserve the frozen criteria. Within current authorization and shared bounds, execute the next representative run from the saved instructions with changed input and a fresh output; independently verify that the checker reads that current output against the current-source oracle. Rerun other affected checks and regressions, then deliver verified results or a labeled partial/failure report. If the follow-up cannot run, record saved-procedure reuse as unverified and state its exact next check. A review record alone is not an updated playbook.
 
 ## Examples and exceptions
 
@@ -50,7 +50,7 @@ REPLACE: current authorization source, independent decisions, permitted files/ac
 
 ## Completion checks
 
-Define these before execution. Checks measure the outcome against independent source facts or user examples, beyond following this procedure. Snapshot the table in each run before work; never change it to excuse a failure.
+Define these before execution. Checks measure the outcome against independent source facts or user examples, beyond following this procedure. Snapshot the table in each run before work; never change it to excuse a failure. Bind active evidence references to that run, matching the procedure and invocation; old receipts belong in labeled history.
 
 | ID | Expected observable outcome | Method / independent oracle | Required evidence |
 |---|---|---|---|
@@ -65,7 +65,7 @@ REPLACE: reviewer-owned frozen criteria/evaluator location and hash; input/tool/
 
 ## Execution and automation
 
-REPLACE: explicitly established manual / one_time / recurring / event mode. For automation: trigger, timezone, dependencies/order, overlap, retries, stop conditions and notification preference. Inspect/reuse existing scheduler/queue. Record actual provider ID, status, verification time and receipt only after registration. Before retrying an uncertain operation, reconcile its external outcome and deduplication key. Without scheduler access deliver unregistered configuration and the exact missing prerequisite.
+REPLACE: supported invocation with current per-run source/output/evidence bindings, and explicitly established manual / one_time / recurring / event mode. For automation: trigger, timezone, dependencies/order, overlap, retries, stop conditions and notification preference. Inspect/reuse existing scheduler/queue. Record actual provider ID, status, verification time and receipt only after registration. Before retrying an uncertain operation, reconcile its external outcome and deduplication key. Without scheduler access deliver unregistered configuration and the exact missing prerequisite.
 
 ## Limits and recovery
 

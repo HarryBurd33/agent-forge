@@ -44,5 +44,12 @@
       "error": "record check missing fields: evidence, method"
     },
     "behavioral_comparison": "See results.json upgrade_0_3_0 and REPORT.md; actual generated solutions/provider calls with stated limits"
+  },
+  "upgrade_0_3_1": {
+    "helper_tests": 25,
+    "workflow_tests": 2,
+    "status": "executed_pass",
+    "native_and_model_evidence": "See results.json upgrade_0_3_1; delivery/install/release gates separate",
+    "corruption_control": "expected_failure"
   }
 }
