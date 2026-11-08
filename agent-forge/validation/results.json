@@ -129,5 +129,52 @@
     "external sends/provider readback",
     "live process fencing",
     "non-Codex host"
-  ]
+  ],
+  "current_version": "0.3.0",
+  "upgrade_0_3_0": {
+    "version": "0.3.0",
+    "date": "2026-11-08",
+    "baseline": "installed0.2.0",
+    "review_assignment": "GPT-6 Astra / Extra High",
+    "executor_assignment": "GPT-6.1 Sol / Medium, fresh context per arm",
+    "criteria_sha256": "5107ab962d6f3de3b158506afef181ddfb50a7bdeccca09d7b1b43404b68fbdc",
+    "instruction_sha256": "64a858741317442a69eb5b12d833cfb357baa06b428acf99d569ca403e2a5696",
+    "helper_sha256": "e83fb323e999ea585c7d2ea9ffaaa55b151d086f1a206e5280044b472da3c294",
+    "decision": "adopt",
+    "critical_failures_observed": [],
+    "cases": {
+      "D": {
+        "baseline": "pass: manual prompt application",
+        "candidate": "pass: actual generated Python adapter;0 \u00b0C and missing-unit blocker",
+        "comparison_limit": "different execution mechanisms; no superiority claim"
+      },
+      "W": {
+        "baseline": "correct totals, but repair bypassed required render_report tool",
+        "candidate": "required provider rerender after failed check; saved playbook correction before primary5/regression7/final5 checks",
+        "benefit": "required tool path preserved during repair"
+      },
+      "A": {
+        "baseline": "pass initial and heldout observation-based routing",
+        "candidate": "pass initial and same heldout; zero children, no duplicate uncertain send, unregistered schedule, redacted trace",
+        "comparison_limit": "known branch table; fixed workflow adequate; bare-runner heldout, no autonomous-planning superiority"
+      }
+    },
+    "helper_tests": 25,
+    "workflow_integration_tests": 1,
+    "post_model_run_repair": "Explained optional not_applicable conformance accepted; required N/A rejected. Helper/tests/status docs independently reviewed and tested; generated cases do not use N/A.",
+    "timing": {
+      "baseline_recorded_interval_seconds": 174.00469,
+      "candidate_recorded_interval_seconds": 171.067479,
+      "scope": "Recorded executor intervals only; candidate began scoped provider probes before its recorded start. Not total effort or controlled latency. No efficiency claim.",
+      "tokens": null,
+      "api_cost_usd": null
+    },
+    "limits": [
+      "Three synthetic tasks per arm, one context per arm; actual backend build unavailable.",
+      "Host-assisted generation, execution and repair; not unattended runtime proof.",
+      "No real scheduler delivery, sending/reconciliation, process locking, hostile isolation or non-Codex host tested.",
+      "Tool cards supplied; demonstrated benefit concerns using required interface, not inventing superior tool schemas.",
+      "Account allowance is not task usage or cost."
+    ]
+  }
 }

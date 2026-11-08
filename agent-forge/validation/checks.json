@@ -26,5 +26,23 @@
     "ready": "correctly refused draft",
     "find": "playbook found"
   },
-  "privacy_inventory": "skill files only; no private task state, raw model records, outputs or caches"
+  "privacy_inventory": "skill files only; no private task state, raw model records, outputs or caches",
+  "upgrade_0_3_0": {
+    "date": "2026-11-08",
+    "helper_tests": {
+      "count": 25,
+      "result": "passed",
+      "kind": "executed deterministic; independently rerun after N/A repair"
+    },
+    "workflow_integration": {
+      "count": 1,
+      "result": "passed",
+      "kind": "executed existing deterministic workflow against candidate"
+    },
+    "historical_incomplete_record": {
+      "result": "correctly rejected",
+      "error": "record check missing fields: evidence, method"
+    },
+    "behavioral_comparison": "See results.json upgrade_0_3_0 and REPORT.md; actual generated solutions/provider calls with stated limits"
+  }
 }
