@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Seed, search and structurally audit Agent Forge projects. No task execution."""
 import argparse
+import hashlib
 import json
 import math
 from pathlib import Path, PurePosixPath
@@ -44,6 +45,14 @@ def number(value, minimum=0, positive=False):
 def read_json(path):
     with path.open(encoding="utf-8") as handle:
         return json.load(handle, parse_constant=lambda value: (_ for _ in ()).throw(Invalid("nonfinite JSON number: " + value)))
+
+
+def file_sha256(path):
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 def credential_path(parts):
@@ -199,6 +208,32 @@ def audit(root, ready=False):
                 require(bool(validation["evidence"]), ident + ": validated resource needs evidence")
             for ref in validation["evidence"]:
                 location(root, ref)
+            bindings = validation.get("bindings", [])
+            require(isinstance(bindings, list), ident + ": validation.bindings must be an array")
+            seen_bindings = set()
+            evidence_paths = set()
+            for ref in validation["evidence"]:
+                evidence_path = location(root, ref)
+                if evidence_path is not None:
+                    evidence_paths.add(str(evidence_path.resolve()))
+            for binding in bindings:
+                object_fields(binding, ("role", "location", "sha256"), ident + " freshness binding")
+                role, bound_location, expected = binding["role"], binding["location"], binding["sha256"]
+                require(role in ("source", "evidence"), ident + ": binding role must be source or evidence")
+                require(text(expected) and bool(re.fullmatch(r"[0-9a-fA-F]{64}", expected)),
+                        ident + ": binding sha256 must be 64 hexadecimal characters")
+                bound_path = local_path(root, bound_location)
+                normalized = str(bound_path.resolve())
+                key = (role, normalized)
+                require(key not in seen_bindings, ident + ": duplicate freshness binding: " + bound_location)
+                seen_bindings.add(key)
+                if role == "evidence":
+                    require(normalized in evidence_paths,
+                            ident + ": evidence binding must appear in validation.evidence: " + bound_location)
+                actual = file_sha256(bound_path)
+                require(actual.casefold() == expected.casefold(),
+                        ident + ": stale " + role + " binding " + bound_location
+                        + " (expected sha256 " + expected.casefold() + ", observed " + actual + ")")
             require(entry["replaces"] is None or text(entry["replaces"]), ident + ": replaces must be null or resource ID")
             ids[ident] = entry
             graph[ident] = entry["dependencies"]
@@ -276,6 +311,107 @@ def audit(root, ready=False):
     return {"ok": not errors, "errors": errors, "warnings": warnings}
 
 
+RUN_WARNING = ("Run-record conformance only: does not establish a successful task, domain truth, "
+               "authority, criteria sufficiency or remote evidence validity; external references were not fetched.")
+
+
+def json_value(value):
+    """Reject non-JSON values, including numeric overflow accepted by json.loads."""
+    if value is None or type(value) in (str, bool, int):
+        return True
+    if type(value) is float:
+        return math.isfinite(value)
+    if type(value) is list:
+        return all(json_value(item) for item in value)
+    if type(value) is dict:
+        return all(type(key) is str and json_value(item) for key, item in value.items())
+    return False
+
+
+def json_equal(left, right):
+    """Compare JSON recursively without Python's false == 0 coercion."""
+    if type(left) in (int, float) and type(right) in (int, float):
+        return left == right
+    if type(left) is not type(right):
+        return False
+    if isinstance(left, dict):
+        return left.keys() == right.keys() and all(json_equal(left[key], right[key]) for key in left)
+    if isinstance(left, list):
+        return len(left) == len(right) and all(json_equal(a, b) for a, b in zip(left, right))
+    return left == right
+
+
+def audit_run(root, record, criteria, criteria_sha256):
+    """Validate a record against separately supplied pinned checks; never execute them."""
+    errors, warnings = [], [RUN_WARNING]
+    try:
+        require(root.is_dir(), "project directory does not exist")
+        require(text(criteria_sha256) and bool(re.fullmatch(r"[0-9a-fA-F]{64}", criteria_sha256)),
+                "criteria-sha256 must be 64 hexadecimal characters")
+        # Verify the exact bytes parsed, before inspecting any candidate record.
+        criteria_bytes = criteria.read_bytes()
+        actual = hashlib.sha256(criteria_bytes).hexdigest()
+        require(actual == criteria_sha256.casefold(), "criteria SHA256 mismatch")
+        frozen = json.loads(criteria_bytes, parse_constant=lambda value: (_ for _ in ()).throw(
+            Invalid("nonfinite JSON number: " + value)))
+        object_fields(frozen, ("checks",), "criteria")
+        require(json_value(frozen), "criteria must contain finite JSON values")
+        require(isinstance(frozen["checks"], list), "criteria checks must be an array")
+        criteria_by_id = {}
+        for check in frozen["checks"]:
+            object_fields(check, ("id", "expected", "method"), "criterion")
+            ident = check["id"]
+            require(text(ident), "criterion id must be nonempty text")
+            require(ident not in criteria_by_id, "duplicate criterion id: " + ident)
+            require(text(check["method"]), ident + ": criterion method must be nonempty text")
+            require(type(check.get("required", True)) is bool, ident + ": required must be boolean")
+            criteria_by_id[ident] = check
+        review = read_json(local_path(root, record))
+        object_fields(review, ("status", "checks"), "run record")
+        require(json_value(review), "run record must contain finite JSON values")
+        require(text(review["status"]) and review["status"] in
+                ("planned", "running", "passed", "partial", "failed", "blocked", "uncertain"),
+                "invalid run status")
+        require(isinstance(review["checks"], list), "record checks must be an array")
+        seen, statuses = set(), {}
+        for check in review["checks"]:
+            object_fields(check, ("id", "expected", "method", "status", "evidence", "observed"), "record check")
+            ident = check["id"]
+            require(text(ident), "record check id must be nonempty text")
+            require(ident not in seen, "duplicate record check id: " + ident)
+            seen.add(ident)
+            require(ident in criteria_by_id, "unknown record check id: " + ident)
+            criterion = criteria_by_id[ident]
+            require(text(check["method"]), ident + ": record method must be nonempty text")
+            for field in ("expected", "method"):
+                require(json_equal(check[field], criterion[field]), ident + ": changed frozen " + field)
+            status = check["status"]
+            require(text(status) and status in ("pass", "fail", "blocked", "unavailable", "not_run", "not_applicable"),
+                    ident + ": invalid check status")
+            require(strings(check["evidence"]), ident + ": evidence must be an array of references")
+            for ref in check["evidence"]:
+                location(root, ref)
+            if status == "not_applicable":
+                require(criterion.get("required", True) is False,
+                        ident + ": not_applicable is allowed only for an optional criterion")
+                require(text(check["observed"]),
+                        ident + ": not_applicable requires a nonempty explanation in observed")
+            if status == "pass":
+                require(bool(check["evidence"]), ident + ": passing check requires evidence")
+                require(check["observed"] is not None, ident + ": passing check requires a non-null observation")
+            statuses[ident] = status
+        required = {ident for ident, check in criteria_by_id.items() if check.get("required", True)}
+        require(required.issubset(seen), "missing required checks: " + ", ".join(sorted(required - seen)))
+        if review["status"] == "passed":
+            require(all(statuses[ident] == "pass" for ident in required),
+                    "passed run requires every required check to pass")
+        else:
+            warnings.append("Conformant record may describe incomplete or failed execution; run status: " + review["status"])
+    except (Invalid, OSError, ValueError, TypeError, KeyError, AttributeError) as exc:
+        errors.append(str(exc))
+    return {"ok": not errors, "errors": errors, "warnings": warnings}
+
+
 def find(root, query):
     require(text(query), "query must be nonempty")
     _, index = load_project(root)
@@ -301,12 +437,19 @@ def main(argv=None):
     audit_parser = commands.add_parser("audit", help="Check structure, inventory and optional readiness markers")
     audit_parser.add_argument("project", type=Path)
     audit_parser.add_argument("--ready", action="store_true")
+    run_parser = commands.add_parser("audit-run", help="Check a run record against independently pinned criteria")
+    run_parser.add_argument("project", type=Path)
+    run_parser.add_argument("--record", required=True)
+    run_parser.add_argument("--criteria", type=Path, required=True)
+    run_parser.add_argument("--criteria-sha256", required=True)
     args = parser.parse_args(argv)
     try:
         if args.command == "init":
             result = init(args.project, args.project_id)
         elif args.command == "find":
             result = find(args.project, args.query)
+        elif args.command == "audit-run":
+            result = audit_run(args.project, args.record, args.criteria, args.criteria_sha256)
         else:
             result = audit(args.project, args.ready)
     except (Invalid, OSError, ValueError, TypeError, KeyError) as exc:

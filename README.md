@@ -5,6 +5,8 @@
 
 A reusable Codex skill that turns a working method into a task agent: focused interview → playbook → reusable toolbox → bounded run → check → fix → saved playbook update → rerun.
 
+Version 0.3.0 selects a direct reusable prompt/tool call, a fixed workflow, or an observation-driven agent from task evidence. Known branch tables can remain fixed workflows. Full projects are created when useful.
+
 Agent Forge creates and maintains concrete agent projects. It uses the host's tools and current authorization for execution. Its Python helper scaffolds, searches and audits local artifacts. Scheduling and persistent execution require a supported host integration.
 
 ## Install for all your Codex chats
@@ -44,7 +46,7 @@ fix the failed output, save the validated lesson, and rerun affected checks.
 
 For automation, explicitly request the desired trigger, timezone, overlap/retry policy and notifications. Agent Forge inspects existing jobs and reports a registration only after actual host readback. Without scheduler access it prepares unregistered configuration. An ordinary request to summarize a document does not start an agent-building interview.
 
-## What a project contains
+## What a workflow or agent project contains
 
 | Artifact | Purpose |
 |---|---|
@@ -62,6 +64,7 @@ Projects and private interview records belong outside the reusable skill. Creden
 |---|---|---|
 | Task interview and playbook/package creation | Skill instructions, templates and actual local model examples | Domain judgments still need suitable examples and checks |
 | Resource search and reuse | `find`, toolbox contract, repeated-template workflow test | The model must inspect whether a match fits |
+| Run-record conformance | `audit-run` compares complete checks with separately pinned criteria; 25 helper tests cover current helper behavior | Conformance does not prove evidence truth or domain correctness |
 | Local scaffolding and audit | Python standard-library CLI, unit tests, manifest/link verification | Structural checks cannot prove arbitrary domain correctness |
 | Check/fix/update/rerun | Actual model repair example and reproducible local workflow test | Bounded attempts; no guarantee every task can be repaired |
 | Delegation | Child contracts, shared limits and parent review instructions | Needs host orchestration; instructions alone do not fence tools or concurrent processes |
@@ -81,7 +84,7 @@ python3 agent-forge/scripts/forge.py audit ../new-report-agent
 python3 agent-forge/scripts/forge.py audit ../new-report-agent --ready
 ```
 
-The new project's parent directory must exist. Initialization refuses existing destinations and leaves a draft. The final `--ready` command is expected to fail until readiness fields and evidence are supplied. The helper does not execute the business task or register jobs.
+The new project's parent directory must exist. Initialization refuses existing destinations and leaves a draft. The final `--ready` command is expected to fail until readiness fields and evidence are supplied. The helper does not execute the business task or register jobs. For explicit run-record checking, use `audit-run PROJECT --record runs/01/review.json --criteria /reviewer/criteria.json --criteria-sha256 EXPECTED_SHA256`; see the [criteria contract](agent-forge/references/contracts.md).
 
 ## Verify a checkout
 
@@ -92,5 +95,7 @@ python3 -m unittest discover -s tests -v
 ```
 
 GitHub CI runs these commands on Python 3.9, 3.12 and 3.14. The workflow test exercises an existing template, a deliberately wrong total, frozen acceptance, repair, a saved playbook correction, a zero-value regression, a repeated request and a final inventory audit. It is a deterministic fixture rather than an LLM benchmark. The release verifier checks metadata, links, JSON/Python syntax, MIT licenses and file manifests.
+
+The 0.3.0 actual generated-solution comparison demonstrated a narrow improvement: repair used the task-required renderer after a failed check, where the 0.2.0 baseline directly rewrote its output. Both produced correct totals. Other synthetic behaviors and the unseen-observation regression passed in both arms; no broad reliability or efficiency gain is claimed.
 
 The published repository is exported from an explicit file allowlist. It contains no private build history, raw interview/model logs, task checkpoint database or generated business outputs. [Sources and reuse decisions](agent-forge/SOURCES.md) record the inspected foundations. Original code and instructions are under the [MIT License](LICENSE).
