@@ -130,7 +130,7 @@
     "live process fencing",
     "non-Codex host"
   ],
-  "current_version": "0.3.0",
+  "current_version": "0.3.1",
   "upgrade_0_3_0": {
     "version": "0.3.0",
     "date": "2026-11-08",
@@ -175,6 +175,82 @@
       "No real scheduler delivery, sending/reconciliation, process locking, hostile isolation or non-Codex host tested.",
       "Tool cards supplied; demonstrated benefit concerns using required interface, not inventing superior tool schemas.",
       "Account allowance is not task usage or cost."
+    ]
+  },
+  "upgrade_0_3_1": {
+    "version": "0.3.1",
+    "date": "2026-11-08",
+    "baseline": "0.3.0",
+    "status": "behavior_verified_release_gates_separate",
+    "required_behavior_change": "Saved reusable procedure must bind current source/output/run/evidence consistently, then pass a changed-input/fresh-output followup.",
+    "cases": {
+      "reuse": {
+        "baseline": "fresh report42 passes but active saved checker/evidence still target prior report01/run01; partial",
+        "candidate": "explicit per-run bindings; actual saved invocation produces report04 total13 from0,5,8, checks current output, preserves previous reports/template/private data",
+        "comparison_limit": "one Sol/Medium executor context per arm; candidate executor previously ran unrelated interview/reconciliation cases; no broad efficacy claim"
+      },
+      "interview": {
+        "result": "one actual clarification, supplied frozen synthetic policy, saved teach-back/examples/readiness then actual heldout execution",
+        "labels": "standard is semantic equivalent of routine; exact spelling was not specified",
+        "chronology": "minimal actual message/command-order receipts and filesystem times; full worker transport stream unavailable"
+      },
+      "delegation": {
+        "result": "two actual child identities; A blocks on zero throughput, corrected A ratio4 under shared retry, B ratio5; parent independently integrates A",
+        "attempts": 3,
+        "remaining": 0,
+        "limits": "serial child roles, not parallel speedup; zero/exhausted admission controls are local cooperating checks, not host/process fencing; final v1 metadata normalized after execution"
+      },
+      "reconciliation": {
+        "result": "lookup committedA prevents resend; lookup absentB permits exactly one send/readback; unknownC remains blocked",
+        "limits": "synthetic local provider, not live-service transport loss or domain connector"
+      },
+      "native": {
+        "result": "fresh ephemeral CLI literal skill invocation loads installed0.3.0; actual sum13,zero0,missing rows rejected; separate ordinary task returns exact Total:$42 with no tools/files",
+        "cli_version": "0.166.0",
+        "requested_model": "gpt-6.1-sol",
+        "requested_effort": "medium",
+        "backend_build": null,
+        "post_install_invocation": "Separate release gate; see repository VERIFICATION.md for installed-version evidence",
+        "positive": {
+          "elapsed_seconds": 83.80533858301351,
+          "exit_code": 0,
+          "usage": {
+            "input_tokens": 185093,
+            "cached_input_tokens": 157440,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2799,
+            "reasoning_output_tokens": 274
+          }
+        },
+        "negative": {
+          "elapsed_seconds": 4.067190417001257,
+          "exit_code": 0,
+          "usage": {
+            "input_tokens": 24316,
+            "cached_input_tokens": 13440,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 8,
+            "reasoning_output_tokens": 0
+          }
+        }
+      },
+      "automation": {
+        "status": "two_native_wakes_and_cleanup_observed",
+        "configured": "native same-chat heartbeat, explicit future UTC start, finite2 deliveries5minutes apart",
+        "limits": "No event subscription, indefinite recurrence, general queue ordering or hostile exactly-once claim"
+      }
+    },
+    "tests": {
+      "helper": 25,
+      "workflow_integrations": 2,
+      "intentional_corruption_control": "actual checker rejects30 against31; expected failing control"
+    },
+    "limits": [
+      "Small synthetic cases; successful existing behavior is evidence closure, not a new causal improvement.",
+      "No scheduler engine, daemon, provider SDK, trace service or process sandbox bundled.",
+      "Desktop/CLI event-triggered tasks unavailable per inspected current official documentation; requires an eligible supported web/mobile host and explicit connected-event setup.",
+      "Local mock reconciliation does not establish production-provider integration.",
+      "Observed CLI token counts only; no per-task dollar estimate or allowance conversion."
     ]
   }
 }

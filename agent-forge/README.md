@@ -1,6 +1,6 @@
 # Agent Forge
 
-Build a task agent from a working method: interview selectively, capture a playbook, reuse an indexed toolbox, configure execution and verify results. The reusable skill is `agent-forge`; its Codex display name is **Agent Forge**. Version 0.3.0.
+Build a task agent from a working method: interview selectively, capture a playbook, reuse an indexed toolbox, configure execution and verify results. The reusable skill is `agent-forge`; its Codex display name is **Agent Forge**. Version 0.3.1.
 
 Choose a direct reusable prompt/tool call, a fixed workflow, or an observation-driven agent according to the task evidence. A direct solution can stay small; known branches do not require autonomous planning. Approach is separate from manual or automated execution.
 
@@ -64,3 +64,6 @@ python3 -m unittest discover -s /absolute/path/to/agent-forge/tests -v
 [Validation evidence](validation/REPORT.md) separates structural checks, executed utilities, actual model/tool exercises, illustrations and live checks not run. [Examples](references/examples.md) are illustrations. [Sources](SOURCES.md) records inspected foundations and rights. The skill is original MIT source; no dependency on Skill Forge or task-checkpoint is required.
 
 Default bounds are proposals: three total attempts, 30 minutes shared effort, depth 1, concurrency 2, two workers total. Adapt to the task and host before execution. Explicit zero disables delegation; unknown costs stay unknown. Parent review, repair and child work all consume the same limits. Stop with a useful partial/failure report when evidence, authority or resources are insufficient.
+## Verified reuse and host boundaries
+
+The [reuse recipe](references/verified-workflows.md) covers missing validation evidence, unindexed historical output and consistent per-run bindings. A saved-procedure changed-input run now accompanies the actual output check. See the dated validation report for native CLI, staged interview, actual child work and local reconciliation evidence. These are bounded observations, not universal reliability or process-enforcement guarantees.
