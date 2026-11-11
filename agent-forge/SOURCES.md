@@ -30,3 +30,6 @@ Research method: a separate architecture worker inspected local source and raw f
 ## 0.3.1 host verification sources — 2026-11-08
 
 Reused the same-day0.3.0 foundation record; constraints and reuse rights remain applicable, no new framework or upstream code adopted. Inspected local CLI0.166.0 help/login-status plus official [skills](https://learn.chatgpt.com/docs/build-skills), [noninteractive mode](https://learn.chatgpt.com/docs/non-interactive-mode) and [scheduled tasks](https://learn.chatgpt.com/docs/automations). Moving-page revisions and open reuse licenses are unverified; reference only, no prose/code copied. Actual host tool schemas and receipts take precedence over generalized documentation. RFC5545 informs finite DTSTART/COUNT semantics, but configuration equality does not prove host delivery.
+
+### 2026-11-10 recovery continuation
+Original local SQLite/subprocess fixtures and generated runners extend the prior evidence; no new upstream framework or tutorial code was copied. Existing MIT notices and prior source/version/reuse decisions remain. SQLite observations cover this synthetic local process boundary, not production or distributed guarantees.

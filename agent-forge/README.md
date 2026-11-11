@@ -1,6 +1,6 @@
 # Agent Forge
 
-Build a task agent from a working method: interview selectively, capture a playbook, reuse an indexed toolbox, configure execution and verify results. The reusable skill is `agent-forge`; its Codex display name is **Agent Forge**. Version 0.3.1.
+Build a task agent from a working method: interview selectively, capture a playbook, reuse an indexed toolbox, configure execution and verify results. The reusable skill is `agent-forge`; its Codex display name is **Agent Forge**. Version 0.3.2.
 
 Choose a direct reusable prompt/tool call, a fixed workflow, or an observation-driven agent according to the task evidence. A direct solution can stay small; known branches do not require autonomous planning. Approach is separate from manual or automated execution.
 
@@ -67,3 +67,5 @@ Default bounds are proposals: three total attempts, 30 minutes shared effort, de
 ## Verified reuse and host boundaries
 
 The [reuse recipe](references/verified-workflows.md) covers missing validation evidence, unindexed historical output and consistent per-run bindings. A saved-procedure changed-input run now accompanies the actual output check. See the dated validation report for native CLI, staged interview, actual child work and local reconciliation evidence. These are bounded observations, not universal reliability or process-enforcement guarantees.
+
+Version0.3.2 preserves a pending reconciliation path after an unknown lookup, with the original intent and spent budget. See the dated validation report for the actual process-restart regression.

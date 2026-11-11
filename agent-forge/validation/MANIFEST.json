@@ -2,24 +2,24 @@
   "schema_version": 1,
   "files": {
     "LICENSE": "1e3aeed264554c5e05a20db04acf75fa94a1015384a7ec971db7ec240eb3eb6f",
-    "README.md": "0e1f8b82f1e24885c50373fe348dbd6782be351bc4eca4d81bd6245bc1ab19d6",
-    "SKILL.md": "1959f6cd04066e04ed8e10f70b1d5be815aed4d2e9428ed24a1af603ce1b0a6b",
-    "SOURCES.md": "47b6bbbbe41a4406d4da935d4baa625b90c70984e07ba5796ed18afbb3fec0b0",
+    "README.md": "e275af26c1be00a1ef2e8350a3cce79622b490768df82bc14569a3e4e1376ce7",
+    "SKILL.md": "e5a5fe2d67057124c5cd4a0487372b9f92af053f934eb859aa99c4e1e3e47592",
+    "SOURCES.md": "3bba0f9642d1d78b7c281b1b2f863ef38be08fc2e4b4b2fe7b2d76f5a892fcac",
     "agents/openai.yaml": "e1e790aeeb24da3cf813c88ce3f4e10caef9b195e4b5bfda6f1781688d5ebbd9",
     "references/codex.md": "423053d1710af535eb3555e65e5bc3ca4aa4008cd1307dd190fa18e1e9aaa995",
     "references/contracts.md": "9ac12f0cd6c39166716fb120001409245bf22a62de1e48ee99b94a3ef5d4d926",
-    "references/engineering.md": "f46083e43631d7990aec7f09550faa19c7c4a24d7fa2c23f186001731c067c5e",
+    "references/engineering.md": "83ac038e280194310302ba1926f3c51a62be3716ace9ea5415356628d1a444d4",
     "references/examples.md": "fb3afc020e6c708872e204bc91e4136c079e897fa6855062af49c7a688feb3c0",
     "references/verified-workflows.md": "b7df49c8ea80ca79747f11f6c928b9305317ebb15631da5686e12dd61ba2a9b6",
     "scripts/forge.py": "e83fb323e999ea585c7d2ea9ffaaa55b151d086f1a206e5280044b472da3c294",
-    "templates/AGENT.md": "fb9c2ba0f70882ee3579d87925e3e27a884600a0fd8f8a76ab90ec6ec622aaa8",
-    "templates/PLAYBOOK.md": "6366212995d20e24e29eb6d2105d909f87c51023d4ac90357f75df89f53d3240",
+    "templates/AGENT.md": "5cb2c920fae70d98a233ae2cc8eebe69bd8b6c099d6478fe746de8fe1e7207c9",
+    "templates/PLAYBOOK.md": "66b5eb2dc8075cf5767cb486f9010938bde761e475f13f19cb31c817277f0048",
     "templates/agent.json": "838af4a116637cf346619d85e25ed8678b0d02fb13a94e21d8f28498d0be4d97",
     "templates/run-review.json": "ffad6be660f0359a2acdda9b1fbf8ac6cb1cf0a0ba88808307b15d22a2abf2b8",
     "templates/toolbox-index.json": "3a8ec519472fef3b6d4cbd507d7c1a45cff9036bbd72c60ac444ec13e29c4ab7",
     "tests/test_forge.py": "67d1aad4b3ada981c3d8adecdaa74be1e1bd13506ab802f39375f8a90ba8c849",
-    "validation/REPORT.md": "8b5448ed1f33742c0cc898fd09a56645cede19d3f967f78f5d42317953424556",
-    "validation/checks.json": "fcd59e57c3db85a3b5edc3797faa3fdb558b9b6971fcb25ac8f761d5fcc14176",
-    "validation/results.json": "9c85c3a0fac3f35e79fb549e495eed9aaf7e29e297ad79f4ae34a08ac124b5ee"
+    "validation/REPORT.md": "7e502ae67d62aaf0d79745b3e3da23adf4533df8bb7432e7c9aff942fec674b1",
+    "validation/checks.json": "2384a2ff7ff1957e931675f2f2d97491e440ef9acaad1c8c43bcbd731fbf907e",
+    "validation/results.json": "a52f543bfd2288dcdacff0f2431db82bf198ac074576a66833d80a3fadb8dd34"
   }
 }

@@ -130,7 +130,7 @@
     "live process fencing",
     "non-Codex host"
   ],
-  "current_version": "0.3.1",
+  "current_version": "0.3.2",
   "upgrade_0_3_0": {
     "version": "0.3.0",
     "date": "2026-11-08",
@@ -252,5 +252,31 @@
       "Local mock reconciliation does not establish production-provider integration.",
       "Observed CLI token counts only; no per-task dollar estimate or allowance conversion."
     ]
+  },
+  "upgrade_0_3_2": {
+    "version": "0.3.2",
+    "baseline": "0.3.1",
+    "status": "behavior_verified_release_gates_separate",
+    "baseline_late_resolution": "failed_before_lookup; savedstill_unknown rejected byguard",
+    "candidate_late_resolution": "passed;distinctprocess;calls1to2;unchangedintent/history;1effect;0recoverysends",
+    "controls": [
+      "realcommitthenlostACK",
+      "target-onlyconflict",
+      "payload-onlyconflict",
+      "unknownsharedbudgetcap",
+      "lookupunavailable",
+      "completedreplaydenied",
+      "terminalnoncommitmatchingACK"
+    ],
+    "comparison_limits": [
+      "sameexecutorcontext",
+      "diagnosticafterbaselineinspection",
+      "safe localprovideronly"
+    ],
+    "measurement": {
+      "task_cost_usd": null,
+      "model_tokens": null
+    },
+    "evaluator_correction": "Extra post-sendlookup was not required by suppliedcontract; not a productfailure"
   }
 }

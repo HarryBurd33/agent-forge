@@ -51,5 +51,12 @@
     "status": "executed_pass",
     "native_and_model_evidence": "See results.json upgrade_0_3_1; delivery/install/release gates separate",
     "corruption_control": "expected_failure"
+  },
+  "upgrade_0_3_2": {
+    "helper_tests": 25,
+    "existing_workflow_tests": 2,
+    "recovery_process_tests": 6,
+    "legacy_guard_control": "expected_failure",
+    "status": "executed_pass; finalstage rerun required"
   }
 }
