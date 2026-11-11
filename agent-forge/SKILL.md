@@ -3,7 +3,7 @@ name: agent-forge
 description: Build or repair task agents from a user's working method: interview, create an executable playbook and indexed toolbox, configure bounded execution or requested automation, and verify results. Use for explicit agent-building, agent automation, delegation or Agent Forge project changes. Do not turn ordinary task requests or incidental mentions of agents into a building interview.
 license: MIT
 metadata:
-  version: "0.3.2"
+  version: "0.3.3"
 ---
 
 # Agent Forge

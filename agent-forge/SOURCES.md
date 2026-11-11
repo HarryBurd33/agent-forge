@@ -33,3 +33,6 @@ Reused the same-day0.3.0 foundation record; constraints and reuse rights remain 
 
 ### 2026-11-10 recovery continuation
 Original local SQLite/subprocess fixtures and generated runners extend the prior evidence; no new upstream framework or tutorial code was copied. Existing MIT notices and prior source/version/reuse decisions remain. SQLite observations cover this synthetic local process boundary, not production or distributed guarantees.
+
+### 2026-11-11 concurrent qualification
+Existing pinned Anthropic/Hugging Face design findings and rights decisions remain applicable. Original Python standard-library task adapters and sanitized regression fixtures were constructed from the current MIT Agent Forge contracts. No upstream code, substantial prose, framework or runtime dependency was copied. Native dispatch/status tools were inspected and exercised on the available host; their observed behavior does not establish universal scheduling or process guarantees.

@@ -57,6 +57,18 @@
     "existing_workflow_tests": 2,
     "recovery_process_tests": 6,
     "legacy_guard_control": "expected_failure",
-    "status": "executed_pass; finalstage rerun required"
+    "status": "executed_pass",
+    "final_stage": "25 helper and8 workflow/process checks passed; remote PR3/main CI verified on Python3.9/3.12/3.14"
+  },
+  "upgrade_0_3_3": {
+    "status": "executed_pass",
+    "baseline_native_cases": "probe,primary,followup executed; see results.json",
+    "required_prior_regressions": 33,
+    "helper_tests": 25,
+    "existing_workflow_and_recovery_tests": 8,
+    "new_parallel_protocol_tests": 5,
+    "total_tests": 38,
+    "active_guard_negative_control": "expected_failure: extra reservation admitted after temporary < to <= mutation",
+    "behavior_review": "Astra/Extra High accepted P1-P8 with evidence limits; final release acceptance separate"
   }
 }

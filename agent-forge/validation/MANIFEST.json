@@ -2,15 +2,15 @@
   "schema_version": 1,
   "files": {
     "LICENSE": "1e3aeed264554c5e05a20db04acf75fa94a1015384a7ec971db7ec240eb3eb6f",
-    "README.md": "e275af26c1be00a1ef2e8350a3cce79622b490768df82bc14569a3e4e1376ce7",
-    "SKILL.md": "e5a5fe2d67057124c5cd4a0487372b9f92af053f934eb859aa99c4e1e3e47592",
-    "SOURCES.md": "3bba0f9642d1d78b7c281b1b2f863ef38be08fc2e4b4b2fe7b2d76f5a892fcac",
+    "README.md": "42d00a24ad44125c950c6c7a5230c434422cd18ab21bbd32279a61316d1f4207",
+    "SKILL.md": "38b7ae61668a7299fd0f138d2847bad63623b14b267d1d19d61ae916b42478c6",
+    "SOURCES.md": "cec17b6e22bbe1f533a86165168b9ef6523bf4295b303e59067c2d8e775bb51c",
     "agents/openai.yaml": "e1e790aeeb24da3cf813c88ce3f4e10caef9b195e4b5bfda6f1781688d5ebbd9",
     "references/codex.md": "423053d1710af535eb3555e65e5bc3ca4aa4008cd1307dd190fa18e1e9aaa995",
     "references/contracts.md": "9ac12f0cd6c39166716fb120001409245bf22a62de1e48ee99b94a3ef5d4d926",
     "references/engineering.md": "83ac038e280194310302ba1926f3c51a62be3716ace9ea5415356628d1a444d4",
     "references/examples.md": "fb3afc020e6c708872e204bc91e4136c079e897fa6855062af49c7a688feb3c0",
-    "references/verified-workflows.md": "b7df49c8ea80ca79747f11f6c928b9305317ebb15631da5686e12dd61ba2a9b6",
+    "references/verified-workflows.md": "2d46c041bc21480193be70cb019d46114d49cd8ee50d7cdc2f6009290b8c060f",
     "scripts/forge.py": "e83fb323e999ea585c7d2ea9ffaaa55b151d086f1a206e5280044b472da3c294",
     "templates/AGENT.md": "5cb2c920fae70d98a233ae2cc8eebe69bd8b6c099d6478fe746de8fe1e7207c9",
     "templates/PLAYBOOK.md": "66b5eb2dc8075cf5767cb486f9010938bde761e475f13f19cb31c817277f0048",
@@ -18,8 +18,8 @@
     "templates/run-review.json": "ffad6be660f0359a2acdda9b1fbf8ac6cb1cf0a0ba88808307b15d22a2abf2b8",
     "templates/toolbox-index.json": "3a8ec519472fef3b6d4cbd507d7c1a45cff9036bbd72c60ac444ec13e29c4ab7",
     "tests/test_forge.py": "67d1aad4b3ada981c3d8adecdaa74be1e1bd13506ab802f39375f8a90ba8c849",
-    "validation/REPORT.md": "7e502ae67d62aaf0d79745b3e3da23adf4533df8bb7432e7c9aff942fec674b1",
-    "validation/checks.json": "2384a2ff7ff1957e931675f2f2d97491e440ef9acaad1c8c43bcbd731fbf907e",
-    "validation/results.json": "a52f543bfd2288dcdacff0f2431db82bf198ac074576a66833d80a3fadb8dd34"
+    "validation/REPORT.md": "1fcd1387b71d5b4234be055a841976a6dd07db70d32d292502b2ed3e794fd5fb",
+    "validation/checks.json": "d3687d33f33294d5597969c1be05597ba83ae898372e32c12fc26669eaee1b1d",
+    "validation/results.json": "2d1477fa9555e16061cc4903b143f2733b48a0cacd631c38c0b2fd46a1ba457c"
   }
 }

@@ -1,6 +1,6 @@
 # Agent Forge
 
-Build a task agent from a working method: interview selectively, capture a playbook, reuse an indexed toolbox, configure execution and verify results. The reusable skill is `agent-forge`; its Codex display name is **Agent Forge**. Version 0.3.2.
+Build a task agent from a working method: interview selectively, capture a playbook, reuse an indexed toolbox, configure execution and verify results. The reusable skill is `agent-forge`; its Codex display name is **Agent Forge**. Version 0.3.3.
 
 Choose a direct reusable prompt/tool call, a fixed workflow, or an observation-driven agent according to the task evidence. A direct solution can stay small; known branches do not require autonomous planning. Approach is separate from manual or automated execution.
 
@@ -69,3 +69,7 @@ Default bounds are proposals: three total attempts, 30 minutes shared effort, de
 The [reuse recipe](references/verified-workflows.md) covers missing validation evidence, unindexed historical output and consistent per-run bindings. A saved-procedure changed-input run now accompanies the actual output check. See the dated validation report for native CLI, staged interview, actual child work and local reconciliation evidence. These are bounded observations, not universal reliability or process-enforcement guarantees.
 
 Version0.3.2 preserves a pending reconciliation path after an unknown lookup, with the original intent and spent budget. See the dated validation report for the actual process-restart regression.
+
+## 0.3.3 concurrent delegation coverage
+
+This release adds actual concurrent task-child qualification and portable local protocol regressions. The 0.3.2 builder passed the new case, so operating instructions and helper behavior are unchanged. Two native children audited different source formats; the parent recomputed their results, retained a pending handle and enforced the shared dispatch bound. A saved-procedure follow-up changed the selected source while preserving prior artifacts. See the [validation report](validation/REPORT.md) for evidence and limits. The repository tests replay local subprocesses with synthetic host observations; they do not launch model agents or prove host-wide enforcement.
