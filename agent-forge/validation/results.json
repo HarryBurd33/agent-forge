@@ -130,7 +130,7 @@
     "live process fencing",
     "non-Codex host"
   ],
-  "current_version": "0.3.2",
+  "current_version": "0.3.3",
   "upgrade_0_3_0": {
     "version": "0.3.0",
     "date": "2026-11-08",
@@ -278,5 +278,88 @@
       "model_tokens": null
     },
     "evaluator_correction": "Extra post-sendlookup was not required by suppliedcontract; not a productfailure"
+  },
+  "record_scope": "Top-level version/date/cases/unexecuted describe the historical0.1.0 evaluation. Dated upgrade sections record later evidence; current_unverified lists remaining boundaries.",
+  "current_unverified": [
+    "production provider semantics",
+    "host-wide or distributed fencing and hostile isolation",
+    "event subscriptions on this desktop host",
+    "exact timer cadence or indefinite reliability",
+    "other hosts/devices and arbitrary domain accuracy",
+    "simultaneous model inference, latency advantage and per-task cost"
+  ],
+  "upgrade_0_3_3": {
+    "date": "2026-11-11",
+    "kind": "verification coverage; no operating-instruction or helper behavior patch",
+    "baseline_version": "0.3.2",
+    "release_version": "0.3.3",
+    "criteria_sha256": "b5af1148744c77499b264c1ba7f673772cafc8a92d3d76effaecabf9ff32d3a4",
+    "native_task_dispatches": 5,
+    "unique_task_workers": 2,
+    "observed_peak_active": 2,
+    "primary": {
+      "A": {
+        "units": 5,
+        "cost_cents": 855
+      },
+      "B": {
+        "units": 7,
+        "cost_cents": 1070
+      },
+      "combined_units": 12,
+      "combined_cost_cents": 1925,
+      "lower_cost_per_unit": "B"
+    },
+    "followup": {
+      "A": {
+        "units": 5,
+        "cost_cents": 1085
+      },
+      "B": {
+        "units": 7,
+        "cost_cents": 2900
+      },
+      "combined_units": 12,
+      "combined_cost_cents": 3985,
+      "lower_cost_per_unit": "A",
+      "primary_history_preserved": true
+    },
+    "invalid_probe": {
+      "field": "unit_cost_cents",
+      "row": "b3",
+      "exit_code": 65,
+      "numeric_success_summary": false
+    },
+    "controls": {
+      "zero_depth_concurrency_workers": "denied by same reservation entrypoint; unchanged control ledgers",
+      "active_cap1": "denied with copy of actual running assignment",
+      "active_cap2": "third active assignment denied",
+      "exhausted": "sixth dispatch denied after five reservations",
+      "wrong_identity": "rejected before integration",
+      "duplicate_integration": "denied"
+    },
+    "pending_result": "Actual running child handle retained pending; same handle later terminal and matching output integrated once; no replacement dispatch",
+    "observed_tool_process_overlap_seconds": 50.7527745,
+    "observed_case_elapsed_seconds": 400.039768,
+    "usage_tokens": null,
+    "cost_usd": null,
+    "latency_scope": "Tool-process overlap includes explicit bounded coordination wait. Case elapsed from first reservation through parent check. No inference concurrency or speedup claim.",
+    "comparison_limits": [
+      "Retained contexts reused; constructor also served as child A",
+      "Baseline already passed; coverage release is not a measured new reasoning capability",
+      "Native worker handles/status/returns observed; separate native dispatch IDs, turn-start timestamps and backend builds not exposed",
+      "Portable CI fixtures use local subprocesses and synthetic host observations, not native model agents",
+      "One read-only PID check required native sandbox escalation before the same bounded release; no process restarted"
+    ],
+    "release_gates": "Final regression, reviewer, installation/native invocation and GitHub CI/readback recorded separately",
+    "regressions": {
+      "helper": 25,
+      "prior_workflow_recovery": 8,
+      "new_parallel_protocol": 5,
+      "total": 38,
+      "status": "passed",
+      "active_cap_negative_control": "expected_failure"
+    },
+    "behavior_review": "accepted P1-P8 by retained Astra/Extra High; backend identity not independently exposed"
   }
 }
