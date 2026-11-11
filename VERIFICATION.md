@@ -34,3 +34,9 @@ The new `tests/test_reuse_workflow.py` executes actual helper/renderer/checker s
 ## Installed 0.3.1 invocation — 2026-11-08
 
 After a guarded upgrade with a verified 0.3.0 rollback copy, all 21 installed skill files matched the accepted source. A fresh Codex CLI 0.166.0 invocation discovered and loaded installed Agent Forge 0.3.1, generated a small manual adapter and actually checked `[4,0,9]` → exactly `Total: 13`, missing `rows` → exit2 with empty stdout, and `[0]` → exactly `Total: 0`. An independent parent reran those checks and verified the loaded skill hash. Total observed CLI duration was 75.146 seconds; reported usage was 148138 input tokens, 105856 cached input tokens and 2662 output tokens. Token categories are provider-reported; account allowance was not converted to task cost. No paid API fallback was used. Raw task traces and local installation paths are private.
+
+## 0.3.2 recovery evidence
+
+The dated skill report separates the actual generated-workflow comparison from six deterministic process regressions. The latter use separate runner/provider processes and provider-owned effect/call records. A legacy-guard control must fail; no model is secretly called by the test suite. Run the commands in tests/RECOVERY.md from the tests directory. The current release installation/invocation and remoteCI are checked separately.
+
+Installed0.3.2 was then discovered and loaded by a fresh Codex CLI0.166.0 invocation using the existing ChatGPT sign-in and no paidAPI fallback. Actual and independently rerun checks produced13, rejected missing rows with exit2, and preserved0. All21installed skill hashes matched accepted source. CLI duration59.298s; provider-reported168352input,145024cached input and2023output tokens. No account allowance was converted to task cost. Raw native traces remain private.

@@ -5,7 +5,7 @@
 
 A reusable Codex skill that turns a working method into a task agent: focused interview → playbook → reusable toolbox → bounded run → check → fix → saved playbook update → rerun.
 
-Version 0.3.1 selects a direct reusable prompt/tool call, a fixed workflow, or an observation-driven agent from task evidence. Known branch tables can remain fixed workflows. Full projects are created when useful.
+Version 0.3.2 selects a direct reusable prompt/tool call, a fixed workflow, or an observation-driven agent from task evidence. Known branch tables can remain fixed workflows. Full projects are created when useful.
 
 Agent Forge creates and maintains concrete agent projects. It uses the host's tools and current authorization for execution. Its Python helper scaffolds, searches and audits local artifacts. Scheduling and persistent execution require a supported host integration.
 
@@ -102,3 +102,7 @@ The published repository is exported from an explicit file allowlist. It contain
 ## 0.3.1 verified reuse update
 
 Reusing a project now includes checking every active saved source/output/evidence reference and executing an authorized bounded follow-up from the saved procedure. The new comparison caught an old checker path despite a correct report, then verified the next changed-input run against the new output. Additional actual interviews, child tasks, local recovery paths and fresh CLI invocation strengthen evidence for existing behavior. Read the validation report for precise automation status and host limits; this is not an autonomous runtime or bundled scheduler.
+
+## 0.3.2 pending recovery
+
+An unresolved lookup ends the current invocation while preserving a later authorized readback path. The observed baseline runner saved an unknown state that its own resume guard rejected; a workflow generated from the revised instructions resumed that same intent after later provider resolution. Identity conflicts stop, and repeated readback consumes the original budget. [Recovery regression](tests/RECOVERY.md) documents the reproducible local process test.
