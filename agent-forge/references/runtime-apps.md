@@ -43,8 +43,20 @@ Paths below are examples from Eve 1.0.0-rc.9, relative to its installed document
 | Observability and repair | `guides/instrumentation/instrumentation.mdx`, `guides/instrumentation/agent-runs.mdx`, `reference/cli/index.md` | Inspect persisted session events, real logs and exposed usage. Use the scoped Agent Runs MCP or CLI when available. Sanitize trace exports and treat trace content as input data. Record the failure, cause, saved procedure correction, and changed-input rerun. |
 | Deployment and operations | `guides/deployment/index.md`, selected provider or self-hosting guide | Keep packaging, route registration, runtime health, persistence, ownership and rollback verifiable independently. Test a local or authorized preview before relying on production. |
 
+Before enabling shared runtime delegation, use [concurrency and fencing](concurrency.md) to reserve each authorized child launch and verify scope and reconciliation.
+
 ## Verify the actual app
 
 Build and typecheck using the project's real commands. Run a bounded representative fixture through its normal route with a fresh input and an independent expected result. Capture model identity, tool results and terminal state. Confirm invalid input is rejected before any protected effect, preserve unknown accepted results for later observation, and reconcile interrupted effects before retrying. Stop test processes or schedules you own and record their terminal status.
 
 Label each capability by the evidence obtained, such as documented, configured, compiled, locally executed, or provider verified. State the exact follow-up check for any missing outcome. Synthetic mock runs establish framework mechanics and fixture behavior. Cross-process state, crash recovery during an effect, schedule cadence, provider authentication, and model quality each require their own observations.
+
+## Preserve browser identity, stream position, and cancellation
+
+An authenticated channel is only one boundary. Check who may read, send to, resume, and cancel each session. In the pinned local example, a single loopback gateway owns that policy and keeps its backend operator credential out of the browser. Eve's trace audience and bearer configuration alone do not establish the example's per-session ownership. Preserve the ownership record across ordinary restarts and reconcile an uncertain create before retrying. Qualify production authentication, concurrent gateways, storage loss and crash recovery separately.
+
+Inspect and forward the SDK's required stream headers and cursor query fields through an adapter. The rc.9 client requires its stream-version header. A delivery result read can advance the handle's cursor; use separate display and writer handles when a detached display must later catch up. Test a send while detached, then reconnect from the saved nonzero cursor and verify both the displayed result and the absence of duplicated server work. Reloading a document may reconstruct history from zero; state precisely which cursor behavior was observed.
+
+A cancelled reader leaves server work running. Cancel the observed server turn through the supported control API, then require its terminal cancellation event and the tool's interrupted result. A submitted control is not a completed cancellation. Use a no-effect delayed tool for this test before relying on cancellation around external effects.
+
+A development server can add optional dependencies even when the initial package install was pinned. Inspect the selected sandbox/provider's install behavior. For the rc.9 local fixture, explicitly selecting the pinned just-bash provider with automatic installation disabled prevents a session-preparation step from rewriting the dependency graph. Check manifest and lock hashes after representative execution as well as before it; a successful initial build is insufficient. A missing required provider must produce a visible failure when that provider initializes; merely loading a skill does not exercise sandbox initialization.

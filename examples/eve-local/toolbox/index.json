@@ -427,6 +427,367 @@
       },
       "replaces": null,
       "reuse_decision": "Preserve upstream terms and distinguish original code"
+    },
+    {
+      "id": "delegation-route",
+      "purpose": "Operator grants and same-handle Eve reconciliation",
+      "kind": "code",
+      "location": "agent/channels/fixture-delegation.ts",
+      "version": "0.2.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "delegation-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Extend the pinned local Eve fixture without replacing the existing tool or event flows"
+    },
+    {
+      "id": "delegation-receipt-hook",
+      "purpose": "Persist recorded child session identifiers",
+      "kind": "code",
+      "location": "agent/hooks/delegation-receipts.ts",
+      "version": "0.2.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "delegation-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Extend the pinned local Eve fixture without replacing the existing tool or event flows"
+    },
+    {
+      "id": "delegation-contracts",
+      "purpose": "Validate budget, launch and child result contracts",
+      "kind": "code",
+      "location": "agent/lib/delegation-input.ts",
+      "version": "0.2.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "delegation-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Extend the pinned local Eve fixture without replacing the existing tool or event flows"
+    },
+    {
+      "id": "delegation-ledger",
+      "purpose": "Atomically reserve and record shared local launch state",
+      "kind": "code",
+      "location": "agent/lib/delegation-ledger.ts",
+      "version": "0.2.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "delegation-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Extend the pinned local Eve fixture without replacing the existing tool or event flows"
+    },
+    {
+      "id": "bounded-json",
+      "purpose": "Reuse bounded JSON ingress for the authenticated fixture routes",
+      "kind": "code",
+      "location": "agent/lib/http-input.ts",
+      "version": "0.2.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "delegation-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Extend the pinned local Eve fixture without replacing the existing tool or event flows"
+    },
+    {
+      "id": "delegation-gate",
+      "purpose": "Reserve one scoped child dispatch and integrate its verified return",
+      "kind": "tool",
+      "location": "agent/tools/delegate_total.ts",
+      "version": "0.2.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "delegation-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Extend the pinned local Eve fixture without replacing the existing tool or event flows"
+    },
+    {
+      "id": "specialist-model",
+      "purpose": "Synthetic model for one declared Eve child",
+      "kind": "code",
+      "location": "agent/subagents/specialist/agent.ts",
+      "version": "0.2.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "delegation-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Extend the pinned local Eve fixture without replacing the existing tool or event flows"
+    },
+    {
+      "id": "specialist-total",
+      "purpose": "Harmless typed integer total scoped to the child",
+      "kind": "tool",
+      "location": "agent/subagents/specialist/tools/scoped_total.ts",
+      "version": "0.2.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "delegation-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Extend the pinned local Eve fixture without replacing the existing tool or event flows"
+    },
+    {
+      "id": "delegation-check",
+      "purpose": "Execute shared-budget, scope and result readback checks against Eve",
+      "kind": "code",
+      "location": "scripts/check-delegation.mjs",
+      "version": "0.2.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "delegation-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Extend the pinned local Eve fixture without replacing the existing tool or event flows"
+    },
+    {
+      "id": "browser-ui-html",
+      "purpose": "Accessible local browser fixture controls",
+      "kind": "code",
+      "location": "browser/index.html",
+      "version": "0.2.0",
+      "dependencies": [
+        "browser-ui-client"
+      ],
+      "status": "draft",
+      "used_by": [
+        "check-browser"
+      ],
+      "validation": {
+        "method": "Follow check-browser in PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Use the pinned Eve SDK with original local fixture code",
+      "input_contract": "Synthetic bearer, optional owned session ID, and plain fixture messages",
+      "output_contract": "Conversation and status display"
+    },
+    {
+      "id": "browser-ui-client",
+      "purpose": "Eve SDK session input, cursor reconnect and guarded cancel",
+      "kind": "code",
+      "location": "browser/app.ts",
+      "version": "0.2.0",
+      "dependencies": [
+        "manifest",
+        "sdk-route"
+      ],
+      "status": "draft",
+      "used_by": [
+        "check-browser"
+      ],
+      "validation": {
+        "method": "Follow check-browser in PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Use the pinned Eve SDK with original local fixture code",
+      "input_contract": "Authenticated owned session and local fixture text",
+      "output_contract": "Replies, connection cursor and durable turn outcome"
+    },
+    {
+      "id": "browser-build",
+      "purpose": "Bundle the pinned Eve client for local browser execution",
+      "kind": "script",
+      "location": "browser/build.mjs",
+      "version": "0.2.0",
+      "dependencies": [
+        "manifest",
+        "lockfile",
+        "browser-ui-client"
+      ],
+      "status": "draft",
+      "used_by": [
+        "check-browser"
+      ],
+      "validation": {
+        "method": "Follow check-browser in PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Use the pinned Eve SDK with original local fixture code",
+      "input_contract": "Pinned dependency install and original browser source",
+      "output_contract": "Ignored local ES module bundle"
+    },
+    {
+      "id": "browser-gateway",
+      "purpose": "Enforce owner access and forward only the loopback fixture routes",
+      "kind": "code",
+      "location": "browser/serve.mjs",
+      "version": "0.2.0",
+      "dependencies": [
+        "browser-ui-html",
+        "browser-build",
+        "sdk-route"
+      ],
+      "status": "draft",
+      "used_by": [
+        "check-browser"
+      ],
+      "validation": {
+        "method": "Follow check-browser in PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Use the pinned Eve SDK with original local fixture code",
+      "input_contract": "Distinct synthetic browser credentials, operator bearer and local Eve port",
+      "output_contract": "Same-origin browser fixture and guarded SDK routes"
+    },
+    {
+      "id": "browser-wait-tool",
+      "purpose": "Provide a cancellable no-effect local turn",
+      "kind": "tool",
+      "location": "agent/tools/fixture_wait.ts",
+      "version": "0.2.0",
+      "dependencies": [
+        "mock-model"
+      ],
+      "status": "draft",
+      "used_by": [
+        "check-browser"
+      ],
+      "validation": {
+        "method": "Follow check-browser in PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Use the pinned Eve SDK with original local fixture code",
+      "input_contract": "Empty tool argument object",
+      "output_contract": "Wait result or interrupted call"
+    },
+    {
+      "id": "browser-sdk-verification",
+      "purpose": "Check SDK cursor, cancellation and cross-principal denial",
+      "kind": "script",
+      "location": "browser/verify.mjs",
+      "version": "0.2.0",
+      "dependencies": [
+        "browser-gateway",
+        "browser-wait-tool"
+      ],
+      "status": "draft",
+      "used_by": [
+        "check-browser"
+      ],
+      "validation": {
+        "method": "Follow check-browser in PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Use the pinned Eve SDK with original local fixture code",
+      "input_contract": "Two owned loopback listeners and three synthetic credentials",
+      "output_contract": "Minimized verification JSON or a nonzero exit"
+    },
+    {
+      "id": "root-local-sandbox",
+      "purpose": "Select the pinned local virtual filesystem and disable automatic dependency installation",
+      "kind": "configuration",
+      "location": "agent/sandbox.ts",
+      "version": "0.4.1",
+      "dependencies": [
+        "manifest",
+        "lockfile"
+      ],
+      "status": "draft",
+      "used_by": [
+        "check-browser",
+        "check-delegation"
+      ],
+      "validation": {
+        "method": "Typecheck/build; actual runtime; missing-package failure; immutable manifest/lock hashes",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Original configuration of the inspected Eve rc.9 public sandbox API; fixes measured dev dependency mutation"
+    },
+    {
+      "id": "child-local-sandbox",
+      "purpose": "Select the pinned local virtual filesystem and disable automatic dependency installation",
+      "kind": "configuration",
+      "location": "agent/subagents/specialist/sandbox.ts",
+      "version": "0.4.1",
+      "dependencies": [
+        "manifest",
+        "lockfile"
+      ],
+      "status": "draft",
+      "used_by": [
+        "check-browser",
+        "check-delegation"
+      ],
+      "validation": {
+        "method": "Typecheck/build; actual runtime; missing-package failure; immutable manifest/lock hashes",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Original configuration of the inspected Eve rc.9 public sandbox API; fixes measured dev dependency mutation"
     }
   ]
 }

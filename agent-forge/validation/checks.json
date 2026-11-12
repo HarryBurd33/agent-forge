@@ -163,5 +163,13 @@
         "skill_sha256": "c29785302a9f92ffba6d08e9dfce7098f0b0b2ce83337d5358657a578895636b"
       }
     }
+  },
+  "upgrade_0_4_1": {
+    "status": "executed_pass",
+    "skill_tests": 36,
+    "resource_blackbox": 19,
+    "generated_arms": 2,
+    "child_and_browser": "Actual runtime, native browser and independent retained review",
+    "dependency_mutation_repair": "Explicit pinned local provider; missingdependency refusal and sourcehash equality"
   }
 }

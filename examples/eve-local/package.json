@@ -11,7 +11,9 @@
     "dev": "eve dev",
     "eval": "eve eval",
     "start": "eve start",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "browser:build": "node browser/build.mjs",
+    "browser:serve": "node browser/serve.mjs"
   },
   "dependencies": {
     "@vercel/connect": "2.7.0",
@@ -21,6 +23,8 @@
   },
   "devDependencies": {
     "@types/node": "24.x",
+    "just-bash": "3.6.0",
+    "rolldown": "1.2.16",
     "typescript": "7.0.2"
   },
   "engines": {
