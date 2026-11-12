@@ -183,10 +183,11 @@ class ReviewTargetTest(unittest.TestCase):
         self.git("config", "diff.fixture.textconv", marker)
         self.git("config", "filter.fixture.clean", marker)
         self.git("config", "filter.fixture.required", "true")
+        self.git("config", "filter.ambient.clean", marker)
         self.write("alpha.txt", "replacement\n")
 
         output = self.review("uncommitted")
-        self.assertEqual(output["disabled_worktree_filters"], ["fixture"])
+        self.assertTrue({"fixture", "ambient"}.issubset(output["disabled_worktree_filters"]))
         self.assertIn("+replacement\n", output["patches"]["unstaged"])
         self.assertFalse((self.repo / "unexpected-external-command").exists())
 
