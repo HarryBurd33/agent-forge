@@ -5,7 +5,7 @@
 
 A reusable Codex skill that turns a working method into a task agent: focused interview → playbook → reusable toolbox → bounded run → check → fix → saved playbook update → rerun.
 
-Version 0.4.0 selects a direct reusable prompt/tool call, a fixed workflow, or an observation-driven agent from task evidence. Known branch tables can remain fixed workflows. Full projects are created when useful.
+Version 0.4.1 selects a direct reusable prompt/tool call, a fixed workflow, or an observation-driven agent from task evidence. Known branch tables can remain fixed workflows. Full projects are created when useful.
 
 Agent Forge creates and maintains concrete agent projects. It uses the host's tools and current authorization for execution. Its Python helper scaffolds, searches and audits local artifacts. Scheduling and persistent execution require a supported host integration.
 
@@ -114,3 +114,9 @@ This release adds actual concurrent task-child qualification and portable local 
 ## 0.4.0 applications and code review
 
 Build concrete runtime applications through [version-matched Eve guidance](agent-forge/references/runtime-apps.md), or perform a [read-only defect review](agent-forge/references/code-review.md) of uncommitted changes, a base branch, a commit or a custom scope. Agent Forge remains dependency-free; Eve is optional for generated applications. Try the [local synthetic fixture](examples/eve-local/README.md) for tools, skills, authenticated events, session restart, SDK streams and evals. Hosted integrations remain conditional on actual setup and verification. See [verification](VERIFICATION.md) for measured results and limits.
+
+## 0.4.1 local ownership and runtime qualification
+
+Reuse the optional [transactional counter helper](agent-forge/references/concurrency.md) when a task fits its local resource contract. The expanded [Eve example](examples/eve-local/README.md) demonstrates real child sessions behind a shared admission gate, original-handle reconciliation, a browser client with session ownership, and server-turn cancellation. The dependency graph stays pinned during representative execution. These are verified local patterns, with a [remaining qualification plan](LIMITATIONS.md) for provider authentication, deployed cadence, replicated storage, isolation and migrations.
+
+In a comparable generated-agent run, 0.4.0 constructed a custom counter and 0.4.1 reused the bundled primitive. Both passed the same 19 independent checks and saved-method changed-input reruns. The benefit is reusable tested code; the single comparison does not establish better model quality or speed. See [verification](VERIFICATION.md) for the measured failures and repairs.

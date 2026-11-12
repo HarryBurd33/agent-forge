@@ -1,6 +1,6 @@
 # Agent Forge
 
-Build a task agent from a working method: interview selectively, capture a playbook, reuse an indexed toolbox, configure execution and verify results. The reusable skill is `agent-forge`; its Codex display name is **Agent Forge**. Version 0.4.0.
+Build a task agent from a working method: interview selectively, capture a playbook, reuse an indexed toolbox, configure execution and verify results. The reusable skill is `agent-forge`; its Codex display name is **Agent Forge**. Version 0.4.1.
 
 For a runtime-backed project, follow the [agent application guide](references/runtime-apps.md) with the selected framework's installed documentation. For a specified change, follow the [read-only code review guide](references/code-review.md). The optional standard-library [Git target helper](scripts/review_target.py) emits diff and scope data for review.
 
@@ -49,6 +49,8 @@ python3 scripts/forge.py audit-run /absolute/path/to/report-agent --record runs/
 
 See [the exact acceptance-file contract](references/contracts.md). This checks required check IDs, matching criteria, complete evidence fields and consistent terminal status. It does not establish that evidence is true or task outputs are correct. Keep evaluator ownership separate and inspect actual outputs. [Engineering guidance](references/engineering.md) covers tool-interface inspection, observation-driven recovery and redacted diagnostic events.
 
+For an authorized local SQLite resource or shared child launch budget, see [concurrency and fencing](references/concurrency.md).
+
 ## Launch and automation
 
 For a prepared task project, ask a host to read its AGENT.md and run the authorized playbook within its configured limits. [Codex setup](references/codex.md) gives the checked CLI syntax and capability limitations. A prepared project is not a launched agent. No job is active merely because agent.json contains a schedule.
@@ -75,3 +77,5 @@ Version0.3.2 preserves a pending reconciliation path after an unknown lookup, wi
 ## 0.3.3 concurrent delegation coverage
 
 This release adds actual concurrent task-child qualification and portable local protocol regressions. The 0.3.2 builder passed the new case, so operating instructions and helper behavior are unchanged. Two native children audited different source formats; the parent recomputed their results, retained a pending handle and enforced the shared dispatch bound. A saved-procedure follow-up changed the selected source while preserving prior artifacts. See the [validation report](validation/REPORT.md) for evidence and limits. The repository tests replay local subprocesses with synthetic host observations; they do not launch model agents or prove host-wide enforcement.
+
+The [local runtime fixture](https://github.com/HarryBurd33/agent-forge/tree/main/examples/eve-local) also exercises real scoped children, shared launch reservations, browser ownership, reconnect and cancellation. Follow its saved playbook and qualify the target host separately.

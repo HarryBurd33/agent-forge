@@ -454,5 +454,52 @@
         "skill_sha256": "c29785302a9f92ffba6d08e9dfce7098f0b0b2ce83337d5358657a578895636b"
       }
     }
+  },
+  "upgrade_0_4_1": {
+    "status": "executed_local_pass",
+    "date": "2026-11-12",
+    "skill_tests": 36,
+    "retained_workflow_tests": 13,
+    "resource_oracle_cases": 19,
+    "baseline_generated_pass": true,
+    "candidate_generated_pass": true,
+    "benefit": "Reusable tested resource helper and actual local runtime qualification; baseline also passed",
+    "lost_ack_total": 42,
+    "rollback_prior_value": 5,
+    "eve_version": "1.0.0-rc.9",
+    "just_bash_version": "3.6.0",
+    "browser_build_version": "rolldown1.2.16",
+    "runtime_totals": [
+      13,
+      7,
+      14
+    ],
+    "browser_totals": [
+      13,
+      7
+    ],
+    "browser_cursor": [
+      14,
+      28
+    ],
+    "server_cancelled": true,
+    "cross_principal_denial": 403,
+    "source_files_unchanged": 39,
+    "negative_controls_rejected": [
+      "stale_owner",
+      "disabled_child_budget"
+    ],
+    "private_receipts": "Retained outside distribution",
+    "limits": "Local mock mechanics and cooperative adapters; deployment/host/paidmodel quality require separate qualification",
+    "active_child_crash": {
+      "original": "same child repeated pure tool and did not settle; reserved original launch preserved",
+      "repair": "match named tool result and validate current input, rather than literal generated call ID",
+      "observed": "SIGKILL55.776ms after call started; same-version same-store restart; original call abandoned, one successful retry14, original child and parent terminal; integrated once; reconcile existing result; no second launch",
+      "changed_input_regressions": [
+        14,
+        7
+      ],
+      "scope": "one local mock runtime crash boundary; not external exactly-once or migration qualification"
+    }
   }
 }

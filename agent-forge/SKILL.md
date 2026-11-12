@@ -3,7 +3,7 @@ name: agent-forge
 description: Build, configure, or repair task agents and agent apps, including durable, tool-calling, multi-agent, and scheduled apps. Create bounded playbooks and toolboxes, or perform a read-only review of a specified code change. Use for explicit agent-building, agent automation, delegation, Agent Forge projects, or code review. Skip incidental agent mentions.
 license: MIT
 metadata:
-  version: "0.4.0"
+  version: "0.4.1"
 ---
 
 # Agent Forge
@@ -57,6 +57,8 @@ Define outcome checks **before** execution against source facts, user examples o
 Propose task-appropriate finite limits. Starter values: three total attempts, 30 minutes shared effort, depth 1, concurrency 2, two workers total. Honor explicit zero delegation limits; unknown cost remains unknown and does not authorize paid tools. Each repair/child consumes the same parent budget. Stop earlier on repeated identical failures, a blocker, budget exhaustion, uncertain side effects or inability to verify. Define recovery and a next action.
 
 For useful supported delegation, give each child a bounded objective, inputs, outputs, tools, authority, allowed files, owner, shared depth/concurrency/worker/retry/effort limits and fixed acceptance checks. Prevent conflicting writes; one owner per shared artifact. Parent integrates and independently reviews returns. No child may reset limits, expand permission or recursively spawn beyond the agreed depth. A zero depth/concurrency/worker bound disables delegation. Nested improvement loops need distinct checks/subtasks and the same total effort cap. Without orchestration, execute serially if authorized or deliver bounded handoffs and label them unlaunched.
+
+When shared writers or runtime children need enforced ownership, follow [concurrency and fencing](references/concurrency.md) for atomic resource writes, durable launch reservations, and uncertain-result readback.
 
 Before processing a run, inspect existing run keys, active ownership and uncertain prior outcomes. Use supported queue leases/idempotency interfaces when available. Files alone cannot enforce concurrency. Without locking/deduplication support, require a single active writer and disclose that overlapping unattended execution is unsupported. Before an external effect, persist the operation key and immutable action, target, payload identity and source version when applicable. Reconcile uncertain effects by comparing the full intent to authoritative provider readback. A matching commit confirms the prior effect. A matching terminal noncommit can permit the same operation and key within current authority and bounds. An identity conflict stops recovery for that intent. Never change the key to bypass uncertainty or conflict. If lookup is unknown or unavailable, stop this invocation with the original intent and consumed budget pending reconciliation. On an authorized later invocation, recheck current authority, ownership and remaining resources before lookup. A pending state must permit that readback without permitting a blind write. Test unknown followed by later authoritative resolution in a distinct process where the task has this recovery path.
 

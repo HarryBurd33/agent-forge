@@ -2,18 +2,20 @@
   "schema_version": 1,
   "files": {
     "LICENSE": "1e3aeed264554c5e05a20db04acf75fa94a1015384a7ec971db7ec240eb3eb6f",
-    "README.md": "03d26247f89e3c49badabd3f807aeb49a1dc2a10e6bbab547408d2785676fa25",
-    "SKILL.md": "c29785302a9f92ffba6d08e9dfce7098f0b0b2ce83337d5358657a578895636b",
-    "SOURCES.md": "9aa612f1474d246845e5e08edb1a9abd54636d11be19a7efeaa587031f84a96c",
+    "README.md": "2df6871e5e7b581abdd248137f9556812efffe58733208cd7482be211560d811",
+    "SKILL.md": "42b618cee2eac435649fb7abb6f2f5c69d625e49f9329d31fea59837ebdde5d5",
+    "SOURCES.md": "aa0b90afe2dd3891e66baba1dc1fc92e35d0a144bef258660bcf8ff2e936dd82",
     "agents/openai.yaml": "ffd232d8ae555edfff782e55d9cdd9c8715ccd5aac0a2df8dc3156e9b728e882",
     "references/code-review.md": "94b20524a7aa19bde076fa62da24b40530fa2199913179c13d44947ea7e53564",
     "references/codex.md": "423053d1710af535eb3555e65e5bc3ca4aa4008cd1307dd190fa18e1e9aaa995",
+    "references/concurrency.md": "2b96d2e1eb096bbdc69109f7fbac5b9c9c572bdaf9068b64512eeb98dce28e46",
     "references/contracts.md": "9ac12f0cd6c39166716fb120001409245bf22a62de1e48ee99b94a3ef5d4d926",
     "references/engineering.md": "83ac038e280194310302ba1926f3c51a62be3716ace9ea5415356628d1a444d4",
     "references/examples.md": "fb3afc020e6c708872e204bc91e4136c079e897fa6855062af49c7a688feb3c0",
-    "references/runtime-apps.md": "d3d6320234eb1cbd6226cd9aaecc91da90a53b8208e6b03ee69980b588c9bae4",
+    "references/runtime-apps.md": "ef76238cd2ce54b74656b285f2c78ede61fac9b6f87e4bee247bf38c2e538284",
     "references/verified-workflows.md": "2d46c041bc21480193be70cb019d46114d49cd8ee50d7cdc2f6009290b8c060f",
     "scripts/forge.py": "e83fb323e999ea585c7d2ea9ffaaa55b151d086f1a206e5280044b472da3c294",
+    "scripts/local_resource.py": "80fe893dac0dd77d49425e4e88227c09b4a0d5d64b726bf1246ede1433e0f428",
     "scripts/review_target.py": "3de8097632fa1829286d9bcb19b80018abca82876acab9ace4522e6977a61125",
     "templates/AGENT.md": "5cb2c920fae70d98a233ae2cc8eebe69bd8b6c099d6478fe746de8fe1e7207c9",
     "templates/PLAYBOOK.md": "66b5eb2dc8075cf5767cb486f9010938bde761e475f13f19cb31c817277f0048",
@@ -21,9 +23,10 @@
     "templates/run-review.json": "ffad6be660f0359a2acdda9b1fbf8ac6cb1cf0a0ba88808307b15d22a2abf2b8",
     "templates/toolbox-index.json": "3a8ec519472fef3b6d4cbd507d7c1a45cff9036bbd72c60ac444ec13e29c4ab7",
     "tests/test_forge.py": "67d1aad4b3ada981c3d8adecdaa74be1e1bd13506ab802f39375f8a90ba8c849",
+    "tests/test_local_resource.py": "576fd98d3d0d75fd4ed40a89c0235a4887dba48f6c464d5256e6cfb3c15cc30a",
     "tests/test_review_target.py": "3a9ac8a93098c1b9e5f7d6db4fbdc0b4fc754491075c6d415e47fb0aea94ce75",
-    "validation/REPORT.md": "1edf940ea4a2df84b40faa8cb2c56eaaf7e8035b5122162af59c0ebf5b4a50b7",
-    "validation/checks.json": "4696b4a37ba838199313c1b9da9055ea7d91fa3fd188e46bd082b35169d8f143",
-    "validation/results.json": "d485941d14ed51ae5bf4481c7c14dbe35e199b7c521a8c40ac6492c93e46277c"
+    "validation/REPORT.md": "ebff7dee326ec6e28835796b57fa2c28c6382f5f9e2d7a5f3ca6e22b3be5dfc1",
+    "validation/checks.json": "96f9cf4f670f8bc8c86ce5bcb6718a49da5be9998b64b8045873999e3049a65e",
+    "validation/results.json": "2d77d2266f9793a6a2acf33782cfbcd6a0eda2886b9b11a2fc004a01f40bddfa"
   }
 }
