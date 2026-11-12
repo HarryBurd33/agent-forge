@@ -130,7 +130,7 @@
     "live process fencing",
     "non-Codex host"
   ],
-  "current_version": "0.4.2",
+  "current_version": "0.4.3",
   "upgrade_0_3_0": {
     "version": "0.3.0",
     "date": "2026-11-08",
@@ -281,13 +281,12 @@
   },
   "record_scope": "Top-level version/date/cases/unexecuted describe the historical0.1.0 evaluation. Dated upgrade sections record later evidence; current_unverified lists remaining boundaries.",
   "current_unverified": [
+    "production identity and expiry",
     "cross-host replication",
     "live backup",
-    "relocation",
-    "migration",
+    "relocation and migration",
     "native isolation",
-    "production identity/provider/cadence",
-    "external-effect commit guarantees"
+    "external-effect atomicity"
   ],
   "upgrade_0_3_3": {
     "date": "2026-11-11",
@@ -535,6 +534,32 @@
       "native isolation",
       "production identity/provider/cadence",
       "external-effect commit guarantees"
+    ]
+  },
+  "upgrade_0_4_3": {
+    "status": "passed_local_qualification",
+    "baseline_same_owner_second_gateway": 403,
+    "candidate_same_owner_second_gateway": 200,
+    "candidate_totals": [
+      13,
+      7
+    ],
+    "independent_actual_browser_total": 9,
+    "actual_browser_cancelled": true,
+    "ownership_capacity": 256,
+    "uncertain_creation_retains_pending": true,
+    "complete_stopped_restore": true,
+    "python_tests": 49,
+    "strict_eve_eval_gates": 9,
+    "native_invocation": "separate delivery gate",
+    "provider_cost": null,
+    "remaining": [
+      "production identity and expiry",
+      "cross-host replication",
+      "live backup",
+      "relocation and migration",
+      "native isolation",
+      "external-effect atomicity"
     ]
   }
 }

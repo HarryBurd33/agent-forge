@@ -5,7 +5,7 @@
 
 A reusable Codex skill that turns a working method into a task agent: focused interview → playbook → reusable toolbox → bounded run → check → fix → saved playbook update → rerun.
 
-Version 0.4.2 selects a direct reusable prompt/tool call, a fixed workflow, or an observation-driven agent from task evidence. Known branch tables can remain fixed workflows. Full projects are created when useful.
+Version 0.4.3 selects a direct reusable prompt/tool call, a fixed workflow, or an observation-driven agent from task evidence. Known branch tables can remain fixed workflows. Full projects are created when useful.
 
 Agent Forge creates and maintains concrete agent projects. It uses the host's tools and current authorization for execution. Its Python helper scaffolds, searches and audits local artifacts. Scheduling and persistent execution require a supported host integration.
 
@@ -124,3 +124,7 @@ In a comparable generated-agent run, 0.4.0 constructed a custom counter and 0.4.
 ## 0.4.2 local recovery qualification
 
 The optional [Eve example](examples/eve-local/README.md) now includes a reproducible two-process shared-admission test and a stopped complete-bundle restore with a read-only preflight. The baseline already passed these mechanics; the upgrade makes qualification reusable. See [verification](VERIFICATION.md) and the [remaining plan](LIMITATIONS.md).
+
+## 0.4.3 shared browser ownership
+
+The optional [Eve example](examples/eve-local/README.md) now shares transactional ownership across two local browser gateways, retains uncertain creation slots and qualifies complete stopped restoration. Use explicit store initialization; existing JSON ownership is not silently migrated. See [verification](VERIFICATION.md) and the [remaining plan](LIMITATIONS.md).

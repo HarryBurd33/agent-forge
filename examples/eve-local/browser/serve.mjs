@@ -1,11 +1,11 @@
 import { timingSafeEqual } from "node:crypto";
-import { mkdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { createServer } from "node:http";
 import { Readable } from "node:stream";
 import { pipeline } from "node:stream/promises";
+import { attachOwnership, sessionIdPattern as idPattern } from "./ownership.mjs";
 
-// A single-owner local ACL for two synthetic browser principals.
+// Local shared ownership for two synthetic browser principals.
 // Only this gateway receives their credentials. Only it forwards the separate
 // fixture operator credential; the Eve backend rejects both browser tokens.
 const a = process.env.AGENT_FORGE_BROWSER_TOKEN_A;
@@ -28,34 +28,7 @@ const browserPort = port("AGENT_FORGE_BROWSER_PORT");
 const evePort = port("AGENT_FORGE_FIXTURE_PORT");
 if (browserPort === evePort) throw new Error("Use distinct gateway and Eve ports");
 
-const owners = new Map();
-const idPattern = /^[A-Za-z0-9_-]{1,160}$/;
-const runtimeDir = new URL("../.eve/", import.meta.url);
-const ownershipFile = new URL("fixture-browser-owners.json", runtimeDir);
-const pendingOwnershipFile = new URL("fixture-browser-owners.tmp", runtimeDir);
-mkdirSync(runtimeDir, { recursive: true });
-try {
-  const entries = JSON.parse(readFileSync(ownershipFile, "utf8"));
-  if (!Array.isArray(entries) || entries.length > 256) throw new Error("Invalid browser ownership file");
-  for (const [sessionId, caller] of entries) {
-    if (typeof sessionId !== "string" || !idPattern.test(sessionId) || owners.has(sessionId) ||
-        !["fixture-browser-a", "fixture-browser-b"].includes(caller)) {
-      throw new Error("Invalid browser ownership entry");
-    }
-    owners.set(sessionId, caller);
-  }
-} catch (error) {
-  if (error.code !== "ENOENT") throw error;
-}
-
-function rememberOwner(sessionId, caller) {
-  // Serialize synchronously around the atomic rename. Only one process may own
-  // this fixture store. A regular restart reloads this file, not an inferred ID.
-  if (owners.size >= 256) throw new Error("Fixture ownership capacity reached");
-  writeFileSync(pendingOwnershipFile, JSON.stringify([...owners, [sessionId, caller]]), { mode: 0o600 });
-  renameSync(pendingOwnershipFile, ownershipFile);
-  owners.set(sessionId, caller);
-}
+const ownership = attachOwnership(process.env.AGENT_FORGE_BROWSER_OWNERSHIP_DB);
 const html = await readFile(new URL("index.html", import.meta.url));
 const app = await readFile(new URL("../dist/fixture-browser/app.js", import.meta.url));
 const upstream = "http://127.0.0.1:" + evePort;
@@ -128,8 +101,13 @@ async function handle(request, response) {
     response.setHeader("WWW-Authenticate", 'Bearer realm="local browser fixture"');
     return json(response, 401, "unauthorized");
   }
-  if (!create && owners.get(match[1]) !== caller) return json(response, 403, "session_forbidden");
-  if (create && owners.size >= 256) return json(response, 503, "fixture_session_limit");
+  if (!create) {
+    try {
+      if (ownership.owner(match[1]) !== caller) return json(response, 403, "session_forbidden");
+    } catch {
+      return json(response, 503, "ownership_unavailable");
+    }
+  }
   for (const [key, value] of url.searchParams) {
     if (url.searchParams.getAll(key).length !== 1 ||
         !(key === "follow" && /^(true|false)$/.test(value) ||
@@ -156,13 +134,48 @@ async function handle(request, response) {
     headers.set("content-type", "application/json");
   }
 
+  let claim;
+  try {
+    if (create) {
+      claim = ownership.reserve(caller);
+      if (claim === null) return json(response, 503, "fixture_session_limit");
+    } else if (request.method === "POST" && ownership.owner(match[1]) !== caller) {
+      return json(response, 403, "session_forbidden");
+    }
+  } catch {
+    return json(response, 503, "ownership_unavailable");
+  }
+
   const result = await fetch(upstream + url.pathname + url.search, {
     method: request.method,
     headers,
     body,
-    signal: abort.signal,
+    signal: create ? AbortSignal.any([abort.signal, AbortSignal.timeout(15_000)]) : abort.signal,
     redirect: "error",
   });
+
+  if (create) {
+    if (!result.ok) {
+      await result.body?.cancel();
+      return json(response, 502, "fixture_create_unconfirmed");
+    }
+    const payload = await result.json();
+    const sessionHeader = result.headers.get("x-eve-session-id");
+    if (typeof payload?.sessionId !== "string" || !idPattern.test(payload.sessionId)
+        || (sessionHeader !== null && sessionHeader !== payload.sessionId)) {
+      return json(response, 502, "fixture_session_identity_error");
+    }
+    try {
+      ownership.finalize(claim, caller, payload.sessionId);
+    } catch {
+      return json(response, 503, "ownership_unavailable");
+    }
+    response.setHeader("Content-Type", "application/json; charset=utf-8");
+    if (sessionHeader !== null) response.setHeader("x-eve-session-id", sessionHeader);
+    response.writeHead(result.status);
+    response.end(JSON.stringify(payload));
+    return;
+  }
 
   const contentType = result.headers.get("content-type");
   if (contentType) response.setHeader("Content-Type", contentType);
@@ -170,17 +183,6 @@ async function handle(request, response) {
     const value = result.headers.get(header);
     if (value !== null) response.setHeader(header, value);
   }
-  if (create && result.ok) {
-    const payload = await result.json();
-    if (!idPattern.test(payload.sessionId ?? "") || owners.has(payload.sessionId)) {
-      return json(response, 502, "fixture_session_identity_error");
-    }
-    rememberOwner(payload.sessionId, caller);
-    response.writeHead(result.status);
-    response.end(JSON.stringify(payload));
-    return;
-  }
-
   response.writeHead(result.status);
   if (result.body) await pipeline(Readable.fromWeb(result.body), response, { signal: abort.signal });
   else response.end();

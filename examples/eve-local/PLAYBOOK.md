@@ -100,7 +100,7 @@ Stop the dev server and verify its process and listener exited. This fixture enf
 
 ## Qualify the local browser client (check-browser)
 
-Keep one Eve process and one gateway process for this fixture copy. Use the same Node 24 / locked Eve install verified above. The browser bundle also pins Rolldown 1.2.16; generated `dist/` is disposable.
+Keep one Eve process for this fixture copy. Use one or two loopback gateways with the same ownership database. Use the same Node 24 / locked Eve install verified above. The browser bundle also pins Rolldown 1.2.16; generated `dist/` is disposable.
 
 1. In the Eve terminal, use an isolated checkout, choose two free loopback ports, set three distinct synthetic fixture tokens, build the UI, then run Eve in the foreground. Run the gateway in a second terminal with the same environment (repeat the exports there). Replace the placeholder values with distinct synthetic tokens of at least 12 visible ASCII characters and no spaces. Use the operator token only in the terminals; the browser takes only a browser token. The fixture explicitly selects just-bash 3.6.0 with automatic installation disabled for root and child; sandbox initialization fails when the pinned dependency is missing, without installing it or changing the manifest.
 
@@ -110,15 +110,21 @@ Keep one Eve process and one gateway process for this fixture copy. Use the same
    export AGENT_FORGE_BROWSER_TOKEN_A="<synthetic Alice token>"
    export AGENT_FORGE_BROWSER_TOKEN_B="<synthetic Bob token>"
    npm run browser:build
-   EVE_TELEMETRY_DISABLED=1 node node_modules/eve/bin/eve.js dev --host 127.0.0.1 --port "$AGENT_FORGE_FIXTURE_PORT" --no-ui --no-default-extensions
+   mkdir -p .eve
+   export AGENT_FORGE_BROWSER_OWNERSHIP_DB="$PWD/.eve/fixture-browser-owners.sqlite"
+   node browser/ownership.mjs init "$AGENT_FORGE_BROWSER_OWNERSHIP_DB"
+   EVE_TELEMETRY_DISABLED=1 EVE_SCHEDULES_DISABLED=1 node node_modules/eve/bin/eve.js dev --host 127.0.0.1 --port "$AGENT_FORGE_FIXTURE_PORT" --no-ui --no-default-extensions
    ```
 
    In the gateway terminal, wait for ready health, then run the gateway in the foreground:
 
    ```sh
    curl -fsS --max-time 5 "http://127.0.0.1:$AGENT_FORGE_FIXTURE_PORT/eve/v1/health"
+   node browser/ownership.mjs check "$AGENT_FORGE_BROWSER_OWNERSHIP_DB"
    node browser/serve.mjs
    ```
+
+   Initialize a new DB once. For an existing fixture, use the read-only check and attach. A second gateway terminal can set a different free AGENT_FORGE_BROWSER_PORT while keeping the same ownership DB, backend port, and synthetic identities.
 
 2. Open `http://127.0.0.1:24732/` (or the chosen gateway port). Enter the Alice token, click **New session**, and send `total [4,0,9]`. Verify **Agent: Total: 13** and **Server turn: completed**. Copy the session ID and note the cursor.
 3. Click **Disconnect stream**. Send the changed input `total [2,0,5]` and observe the acceptance receipt. The transcript remains unchanged while detached. Click **Attach or reconnect** without changing the token or ID. Verify the same session, connection from the saved nonzero cursor, and exactly one reply each for 13 and 7. Reload the page only if you are testing replay: type the token and saved ID, and attach. Reload rebuilds history from cursor zero; the in-memory cursor is retained only while the page stays open.
@@ -133,7 +139,29 @@ Keep one Eve process and one gateway process for this fixture copy. Use the same
 
 The gateway only forwards text-session creation, owner-scoped stream/prepare/send, and owner-scoped cancellation with an explicit turn ID. A bearer proves identity at the gateway; the gateway checks an application-owned session record before forwarding. Eve's private trace audience and its backend bearer alone do not enforce this browser ownership rule. Eve sees requests from the local operator service; Alice and Bob are identities at the gateway. Neither browser bearer authenticates directly to the Eve backend. The gateway does not expose the operator token, other Eve routes, or cross-origin browser access. Credentials stay in runtime environment or browser memory, and are not bundled.
 
-The ownership file is local ignored runtime data in `.eve/fixture-browser-owners.json`. The gateway writes a same-directory temporary file and renames it over the ownership file before acknowledging create. An ordinary gateway restart reads the ownership file. Keep the previous app source and the ignored ownership file separate when rolling back; stop the one owner before restoring source, and preserve ownership records for sessions already admitted. After a lost create response or interrupted record write, inspect the exact receipt, the recorded binding and Eve session before deciding whether to retry. Do not guess an owner or infer successful creation from an unconfirmed attempt. This assumes one gateway owner, a private fixture directory, and an unchanged Eve store and operator configuration. It does not qualify concurrent replicas, lost storage, abrupt interruption, or protection against someone with access to the local operator, runtime files or process. A request that loses its create receipt may have created a session; retain that uncertainty and reconcile evidence before retrying. Do not use this fixture as production authentication or expose it beyond loopback.
+Each gateway looks up committed SQLite ownership at new request admission. Use one absolute canonical path to a private regular ownership DB shared by the local gateways. An ordinary start attaches to the initialized DB and fails on missing or incompatible state. A running gateway fails closed after the path is lost or replaced. An already admitted stream or upstream effect can continue.
+
+A create reserves one of 256 slots before forwarding to Eve. Pending and owned claims both count. The gateway sends a successful session ID only after binding it to that claim and principal. A failed or lost receipt leaves the claim consumed. Eve may already hold an inaccessible orphan session or have executed an initial message. Preserve the claim and investigate the original backend outcome before taking another action. This fixture never guesses ownership, refunds uncertain claims, or retries a create automatically.
+
+The legacy .eve/fixture-browser-owners.json remains untouched. A stopped, audited conversion with explicit authorization is a separate operation. This fixture uses synthetic identities over loopback and a trusted local filesystem. Production identity, cross-host storage and live-stream revocation are separate concerns.
+
+## Qualify shared browser ownership and stopped restore
+
+Use Node 24 with the exact fixture lockfile and Python 3.9+ on macOS or Linux. Choose three free loopback ports and new private work paths outside the source and dependency directories. Use the optional qualifier to start one Eve backend and two gateways, then check concurrent create, cross-gateway owner access, cursor resume, server-turn cancellation, denied operations and backend event continuity. It uses synthetic credentials and disables scheduled dispatch and CLI telemetry.
+
+```sh
+fixture_scratch=$(mktemp -d)
+python3 scripts/run-browser-ownership.py --work-dir "$fixture_scratch/primary" \
+  --ports 24811 24812 24813 --values '[4,0,9]' --expected 13
+python3 scripts/run-browser-ownership.py --work-dir "$fixture_scratch/followup" \
+  --ports 24811 24812 24813 --values '[2,0,5]' --expected 7
+```
+
+The expected total is an independent check input. Use the fixture's installed node_modules by default. A trusted indexed fixture copy and verified installed dependency directory can be selected with --source and --dependencies. The baseline option measures the old single-gateway implementation with both gateways started before creating an owner session.
+
+The wrapper stops all three owned processes before capturing the whole backend state and ownership database family, source and pins, and a private session and cursor map. It verifies the file inventory and checksums, moves only its own stopped directories into quarantine, and reconstructs fresh directories at the same absolute paths. New gateway processes attach to the restored database and Eve resumes its same-version store. Both gateways read the original histories and deny the other principal. The pending claim stays consumed, and readback does not create new sessions. The wrapper verifies cleanup after a normal run or a check failure.
+
+Inspect result.json for process, database, source and bundle evidence and the observer reports for original and restored event positions and totals. Keep these directories private. Restore covers one stopped local backend with two gateways at the same paths and version. Live snapshots, relocation, version migration, production authentication and cross-store atomic create remain separate qualification targets.
 
 ## Keep development dependencies fixed
 
