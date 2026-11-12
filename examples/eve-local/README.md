@@ -11,3 +11,5 @@ The same playbook includes the shared SQLite launch budget, one declared mock ch
 The optional local browser client qualifies authenticated session ownership, display reconnect, and server-turn cancellation. Follow `check-browser` in the playbook. It uses synthetic identities and a versioned SQLite ownership store shared by one or two loopback gateways with one Eve backend. The optional [ownership qualifier](PLAYBOOK.md#qualify-shared-browser-ownership-and-stopped-restore) checks cross-gateway access and stopped same-path restore.
 
 The optional [two-world recovery check](PLAYBOOK.md#qualify-two-local-worlds-and-a-stopped-restore) runs two actual local Eve processes against one SQLite admission ledger, then verifies a stopped bundle restored at the same paths. The wrapper also provides read-only bundle verification.
+
+Trusted legacy fixture ownership can be transferred with the explicit [stopped import procedure](PLAYBOOK.md#import-stopped-legacy-browser-ownership).

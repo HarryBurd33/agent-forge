@@ -1,6 +1,6 @@
 # Remaining qualification plan
 
-Agent Forge 0.4.3 retains reusable local enforcement and verifies the optional runtime example. Its instructions do not create scheduler, process or provider guarantees. These gates are scoped to the actual target application; no new accounts, paid inference, production effects or permanent infrastructure were needed for this release.
+Agent Forge 0.4.4 retains reusable local enforcement and verifies the optional runtime example. Its instructions do not create scheduler, process or provider guarantees. These gates are scoped to the actual target application; no new accounts, paid inference, production effects or permanent infrastructure were needed for this release.
 
 | Area | What is established | Next implementation and observable acceptance | Prerequisite / remaining limit |
 |---|---|---|---|
@@ -33,3 +33,7 @@ The bounded provider-free local qualification tranche is complete when installed
 5. A further planner/framework requires a task where evidence-dependent choices measurably beat the simpler method. No such framework is needed for this ownership fix.
 
 These are target-dependent follow-on gates, not claims of universal capability parity. No production account, credential, API budget, permanent service or external messaging is implied.
+
+## Next feasible work after 0.4.4
+
+Explicit stopped conversion from the old local JSON ownership format is now qualified against original sessions and histories. The backend version and state do not change. This closes a concrete format-upgrade gap; it does not qualify a general Eve or provider migration. Production identity and expiry, cross-host storage, live backup, external-resource effects and native isolation still require selected targets and their actual acceptance runs. Preserve complete old state for rollback; never infer backend existence or identity from a valid JSON mapping alone.

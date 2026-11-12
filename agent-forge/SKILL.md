@@ -3,7 +3,7 @@ name: agent-forge
 description: Build, configure, or repair task agents and agent apps, including durable, tool-calling, multi-agent, and scheduled apps. Create bounded playbooks and toolboxes, or perform a read-only review of a specified code change. Use for explicit agent-building, agent automation, delegation, Agent Forge projects, or code review. Skip incidental agent mentions.
 license: MIT
 metadata:
-  version: "0.4.3"
+  version: "0.4.4"
 ---
 
 # Agent Forge

@@ -130,7 +130,7 @@
     "live process fencing",
     "non-Codex host"
   ],
-  "current_version": "0.4.3",
+  "current_version": "0.4.4",
   "upgrade_0_3_0": {
     "version": "0.3.0",
     "date": "2026-11-08",
@@ -281,11 +281,10 @@
   },
   "record_scope": "Top-level version/date/cases/unexecuted describe the historical0.1.0 evaluation. Dated upgrade sections record later evidence; current_unverified lists remaining boundaries.",
   "current_unverified": [
-    "production identity and expiry",
-    "cross-host replication",
-    "live backup",
-    "relocation and migration",
-    "native isolation",
+    "production identity",
+    "live or cross-host migration",
+    "Eve version migration",
+    "hostile filesystem and power-loss guarantees",
     "external-effect atomicity"
   ],
   "upgrade_0_3_3": {
@@ -559,6 +558,31 @@
       "live backup",
       "relocation and migration",
       "native isolation",
+      "external-effect atomicity"
+    ]
+  },
+  "upgrade_0_4_4": {
+    "status": "passed_local_qualification",
+    "scope": "Explicit stopped legacy JSON ownership import; same backend version/state/paths",
+    "baseline_import": "unsupported",
+    "actual_runtime_totals": [
+      13,
+      7
+    ],
+    "preserves_original_sessions": true,
+    "parent_heldout_cli": "exact two bindings and refusals",
+    "race": "one complete winner",
+    "before_publish_kill": "destination absent",
+    "after_publish_kill": "complete destination retained",
+    "python_tests": 49,
+    "eve_gates": 9,
+    "provider_cost": null,
+    "native_invocation": "separate delivery gate",
+    "remaining": [
+      "production identity",
+      "live or cross-host migration",
+      "Eve version migration",
+      "hostile filesystem and power-loss guarantees",
       "external-effect atomicity"
     ]
   }
