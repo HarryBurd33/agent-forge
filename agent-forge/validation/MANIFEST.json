@@ -3,8 +3,8 @@
   "files": {
     "LICENSE": "1e3aeed264554c5e05a20db04acf75fa94a1015384a7ec971db7ec240eb3eb6f",
     "README.md": "2df6871e5e7b581abdd248137f9556812efffe58733208cd7482be211560d811",
-    "SKILL.md": "ba085f2d43fabbff547627053cc94eefabccb7a9e2d4973c0574a7791c771950",
-    "SOURCES.md": "5d388911bf1598348c39eb4b0635540a7e50c704eb8589ff3e11960473609509",
+    "SKILL.md": "1c06cf8e98c957f3b9796aeb1435b1f56dd81a9f68c4d050fdcb7406ec78b2f4",
+    "SOURCES.md": "94f56d22620072b5c2fd3efdf961aebae3a0d47baf8e37fd8cbd142e863bbf53",
     "agents/openai.yaml": "ffd232d8ae555edfff782e55d9cdd9c8715ccd5aac0a2df8dc3156e9b728e882",
     "references/code-review.md": "94b20524a7aa19bde076fa62da24b40530fa2199913179c13d44947ea7e53564",
     "references/codex.md": "423053d1710af535eb3555e65e5bc3ca4aa4008cd1307dd190fa18e1e9aaa995",
@@ -12,7 +12,7 @@
     "references/contracts.md": "9ac12f0cd6c39166716fb120001409245bf22a62de1e48ee99b94a3ef5d4d926",
     "references/engineering.md": "83ac038e280194310302ba1926f3c51a62be3716ace9ea5415356628d1a444d4",
     "references/examples.md": "fb3afc020e6c708872e204bc91e4136c079e897fa6855062af49c7a688feb3c0",
-    "references/runtime-apps.md": "171f5ed888776e07d180e58946b1e0a7ff543d5240bb4d84c2d0618783c2bb96",
+    "references/runtime-apps.md": "c8e1b0f43935c1c3ddedf878f18c9fd2b295e425076764544981584a05ec0b07",
     "references/verified-workflows.md": "2d46c041bc21480193be70cb019d46114d49cd8ee50d7cdc2f6009290b8c060f",
     "scripts/forge.py": "e83fb323e999ea585c7d2ea9ffaaa55b151d086f1a206e5280044b472da3c294",
     "scripts/local_resource.py": "80fe893dac0dd77d49425e4e88227c09b4a0d5d64b726bf1246ede1433e0f428",
@@ -25,8 +25,8 @@
     "tests/test_forge.py": "67d1aad4b3ada981c3d8adecdaa74be1e1bd13506ab802f39375f8a90ba8c849",
     "tests/test_local_resource.py": "576fd98d3d0d75fd4ed40a89c0235a4887dba48f6c464d5256e6cfb3c15cc30a",
     "tests/test_review_target.py": "3a9ac8a93098c1b9e5f7d6db4fbdc0b4fc754491075c6d415e47fb0aea94ce75",
-    "validation/REPORT.md": "9b3dc83103ac5f9de780f90960c72e70f24961ff171018cb7c3bb901159e1830",
-    "validation/checks.json": "6fd8cac11dfc0868129c1fe8aab72ed883c2d97f72fe162c087fd6fa4c0a7a2e",
-    "validation/results.json": "890e4bb4d8e2fa5d59e9871ddcffe8ec4125a19c5adb79024df5bad4b229ccfc"
+    "validation/REPORT.md": "67be197a44a6603558545b30dda60b9907bea7c5fa113b6582dddbf3357812a1",
+    "validation/checks.json": "a56163c8be4c417a86f3ea89667784d981b5cf336d9c649775262bad18f0b3f0",
+    "validation/results.json": "0ef24fb2161364829f479749789578bacaee96b3d209ef4c3aa4821deb7bbf9c"
   }
 }

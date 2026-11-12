@@ -834,7 +834,7 @@
     },
     {
       "id": "browser-ownership-store",
-      "purpose": "Explicitly initialize, inspect and attach the versioned shared ownership database",
+      "purpose": "Explicitly initialize, inspect, import trusted stopped legacy records, and attach shared ownership",
       "kind": "code",
       "location": "browser/ownership.mjs",
       "version": "0.1.0",
@@ -843,8 +843,8 @@
       "used_by": [
         "browser-ownership-qualification"
       ],
-      "input_contract": "Absolute canonical private SQLite path and synthetic principal/session identifiers",
-      "output_contract": "Readiness counts, durable reservation, immutable ownership, or error",
+      "input_contract": "Absolute canonical private SQLite path; explicit import also takes trusted stopped legacy JSON and a new destination",
+      "output_contract": "Validated readiness counts, immutable ownership, or exclusive import receipt with source digest and counts",
       "validation": {
         "method": "Follow PLAYBOOK.md",
         "evidence": [],

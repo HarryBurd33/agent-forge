@@ -143,7 +143,24 @@ Each gateway looks up committed SQLite ownership at new request admission. Use o
 
 A create reserves one of 256 slots before forwarding to Eve. Pending and owned claims both count. The gateway sends a successful session ID only after binding it to that claim and principal. A failed or lost receipt leaves the claim consumed. Eve may already hold an inaccessible orphan session or have executed an initial message. Preserve the claim and investigate the original backend outcome before taking another action. This fixture never guesses ownership, refunds uncertain claims, or retries a create automatically.
 
-The legacy .eve/fixture-browser-owners.json remains untouched. A stopped, audited conversion with explicit authorization is a separate operation. This fixture uses synthetic identities over loopback and a trusted local filesystem. Production identity, cross-host storage and live-stream revocation are separate concerns.
+The legacy .eve/fixture-browser-owners.json remains untouched. Use the explicit stopped import procedure below when converting trusted legacy fixture records. This fixture uses synthetic identities over loopback and a trusted local filesystem. Production identity, cross-host storage and live-stream revocation are separate concerns.
+
+## Import stopped legacy browser ownership
+
+Use this explicit import only for trusted legacy fixture JSON. Stop the backend and all old gateway writers and verify their PIDs and listeners are gone. Save the original JSON, pinned source and dependency versions, complete backend .eve state including workflow data and development snapshots, and a private map of the original owner, session and cursor. Keep that bundle and its checksums for rollback.
+
+Use absolute canonical paths and an existing private parent directory. The legacy JSON must contain 0–256 exact session-ID and synthetic-principal pairs. The source remains unchanged. The destination must be absent.
+
+```sh
+node browser/ownership.mjs import-legacy "$legacy_json" "$new_owners_sqlite"
+node browser/ownership.mjs check "$new_owners_sqlite"
+```
+
+Require the reported source SHA-256 and imported/owned counts to match the backed-up input, with pending zero. The importer validates and flushes a private sibling SQLite file before exclusively publishing the complete destination. An interrupted import may leave a private staging file. If the destination exists after an interruption, check it and reconcile the original import before any retry. Keep uncertain files available for inspection.
+
+With the same backend version and original absolute state paths, restart the backend and attach the new gateways to the imported database. Compare original histories and cursors as the recorded owners. Verify a different principal is denied without backend event growth. Send a separate authorized test message on an original session, then verify the original session ID and new output. Qualify a fresh changed-input fixture the same way, for example 13 then 7, with independently expected values. Stop the owned processes after each check.
+
+Valid JSON proves only a valid mapping. The original backend history establishes which fixture sessions exist. This is trusted local ACL transfer after observed shutdown. Live conversion, backend version migration, relocation, hostile filesystem access, and power-loss guarantees are separate boundaries. Ordinary gateway startup and the init and check commands keep their existing behavior.
 
 ## Qualify shared browser ownership and stopped restore
 
