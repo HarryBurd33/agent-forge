@@ -1,0 +1,432 @@
+{
+  "schema_version": 1,
+  "project_id": "agent-forge-eve-fixture",
+  "resources": [
+    {
+      "id": "readme",
+      "purpose": "Fixture purpose and entry point",
+      "kind": "documentation",
+      "location": "README.md",
+      "version": "0.1.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "fixture-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Preserve generated project layout where compatible"
+    },
+    {
+      "id": "playbook",
+      "purpose": "Invocation, verification and recovery procedure",
+      "kind": "playbook",
+      "location": "PLAYBOOK.md",
+      "version": "0.1.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "fixture-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Preserve generated project layout where compatible"
+    },
+    {
+      "id": "manifest",
+      "purpose": "Pinned Eve dependency and supported npm commands",
+      "kind": "configuration",
+      "location": "package.json",
+      "version": "0.1.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "fixture-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Preserve generated project layout where compatible"
+    },
+    {
+      "id": "lockfile",
+      "purpose": "Exact dependency resolution and package integrity",
+      "kind": "configuration",
+      "location": "package-lock.json",
+      "version": "0.1.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "fixture-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Preserve generated project layout where compatible"
+    },
+    {
+      "id": "compiler-config",
+      "purpose": "Typecheck configuration",
+      "kind": "configuration",
+      "location": "tsconfig.json",
+      "version": "0.1.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "fixture-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Preserve generated project layout where compatible"
+    },
+    {
+      "id": "retention",
+      "purpose": "Keep build and local runtime state out of published fixture source",
+      "kind": "configuration",
+      "location": ".gitignore",
+      "version": "0.1.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "fixture-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Preserve generated project layout where compatible"
+    },
+    {
+      "id": "mock-model",
+      "purpose": "Deterministic fixture tool requests and observed responses",
+      "kind": "code",
+      "location": "agent/agent.ts",
+      "version": "0.1.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "fixture-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Preserve generated project layout where compatible"
+    },
+    {
+      "id": "instructions",
+      "purpose": "Synthetic agent purpose and tool procedure",
+      "kind": "instructions",
+      "location": "agent/instructions.md",
+      "version": "0.1.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "fixture-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Preserve generated project layout where compatible"
+    },
+    {
+      "id": "auth",
+      "purpose": "Shared bearer credential verification for both routes",
+      "kind": "code",
+      "location": "agent/lib/fixture-auth.ts",
+      "version": "0.1.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "fixture-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Preserve generated project layout where compatible"
+    },
+    {
+      "id": "schemas",
+      "purpose": "Bounded integer and event identifier schemas",
+      "kind": "code",
+      "location": "agent/lib/input.ts",
+      "version": "0.1.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "fixture-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Preserve generated project layout where compatible"
+    },
+    {
+      "id": "sdk-route",
+      "purpose": "Authenticated Eve HTTP client channel",
+      "kind": "code",
+      "location": "agent/channels/eve.ts",
+      "version": "0.1.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "fixture-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Preserve generated project layout where compatible"
+    },
+    {
+      "id": "event-route",
+      "purpose": "Authenticated stable-address event delivery",
+      "kind": "code",
+      "location": "agent/channels/fixture-events.ts",
+      "version": "0.1.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "fixture-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Preserve generated project layout where compatible",
+      "input_contract": "Local authenticated event ID, conversation ID, and bounded integer list",
+      "output_contract": "Delivery receipt with a terminal or unobserved status"
+    },
+    {
+      "id": "total-tool",
+      "purpose": "Typed sum and bounded output",
+      "kind": "tool",
+      "location": "agent/tools/total.ts",
+      "version": "0.1.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "fixture-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Preserve generated project layout where compatible",
+      "input_contract": "Object containing 1\u201364 bounded integers",
+      "output_contract": "Object containing a bounded total, or a typed validation/execution error"
+    },
+    {
+      "id": "loadable-skill",
+      "purpose": "On-demand integer totals procedure",
+      "kind": "instructions",
+      "location": "agent/skills/integer-totals.md",
+      "version": "0.1.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "fixture-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Preserve generated project layout where compatible"
+    },
+    {
+      "id": "schedule",
+      "purpose": "Dev-dispatch fixture schedule",
+      "kind": "configuration",
+      "location": "agent/schedules/fixture-total.md",
+      "version": "0.1.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "fixture-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Preserve generated project layout where compatible"
+    },
+    {
+      "id": "eval-config",
+      "purpose": "Local eval configuration",
+      "kind": "configuration",
+      "location": "evals/evals.config.ts",
+      "version": "0.1.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "fixture-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Preserve generated project layout where compatible"
+    },
+    {
+      "id": "eval",
+      "purpose": "Deterministic tool, error and skill assertions",
+      "kind": "code",
+      "location": "evals/total.eval.ts",
+      "version": "0.1.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "fixture-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Preserve generated project layout where compatible",
+      "input_contract": "Running same-version fixture and bearer auth",
+      "output_contract": "Gate verdicts and optional event evidence"
+    },
+    {
+      "id": "reader",
+      "purpose": "Bounded SDK catch-up by session and cursor",
+      "kind": "code",
+      "location": "scripts/read-session.mjs",
+      "version": "0.1.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "fixture-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Preserve generated project layout where compatible",
+      "input_contract": "Port, session ID, optional saved cursor, and fixture credential",
+      "output_contract": "Bounded event slice with next cursor"
+    },
+    {
+      "id": "toolbox-index",
+      "purpose": "Authored fixture inventory",
+      "kind": "index",
+      "location": "toolbox/index.json",
+      "version": "0.1.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "fixture-verification"
+      ],
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Preserve generated project layout where compatible"
+    },
+    {
+      "id": "provenance-notice-md",
+      "purpose": "Preserve applicable scaffold/dependency source rights",
+      "kind": "documentation",
+      "location": "NOTICE.md",
+      "version": "0.1.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "fixture-verification"
+      ],
+      "validation": {
+        "method": "Inspect source and notices",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Preserve upstream terms and distinguish original code"
+    },
+    {
+      "id": "provenance-license-apache-2-0",
+      "purpose": "Preserve applicable scaffold/dependency source rights",
+      "kind": "documentation",
+      "location": "LICENSE-APACHE-2.0",
+      "version": "0.1.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "fixture-verification"
+      ],
+      "validation": {
+        "method": "Inspect source and notices",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Preserve upstream terms and distinguish original code"
+    },
+    {
+      "id": "provenance-upstream-notice",
+      "purpose": "Preserve applicable scaffold/dependency source rights",
+      "kind": "documentation",
+      "location": "UPSTREAM-NOTICE",
+      "version": "0.1.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "fixture-verification"
+      ],
+      "validation": {
+        "method": "Inspect source and notices",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Preserve upstream terms and distinguish original code"
+    }
+  ]
+}

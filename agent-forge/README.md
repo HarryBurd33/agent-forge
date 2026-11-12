@@ -1,6 +1,8 @@
 # Agent Forge
 
-Build a task agent from a working method: interview selectively, capture a playbook, reuse an indexed toolbox, configure execution and verify results. The reusable skill is `agent-forge`; its Codex display name is **Agent Forge**. Version 0.3.3.
+Build a task agent from a working method: interview selectively, capture a playbook, reuse an indexed toolbox, configure execution and verify results. The reusable skill is `agent-forge`; its Codex display name is **Agent Forge**. Version 0.4.0.
+
+For a runtime-backed project, follow the [agent application guide](references/runtime-apps.md) with the selected framework's installed documentation. For a specified change, follow the [read-only code review guide](references/code-review.md). The optional standard-library [Git target helper](scripts/review_target.py) emits diff and scope data for review.
 
 Choose a direct reusable prompt/tool call, a fixed workflow, or an observation-driven agent according to the task evidence. A direct solution can stay small; known branches do not require autonomous planning. Approach is separate from manual or automated execution.
 
