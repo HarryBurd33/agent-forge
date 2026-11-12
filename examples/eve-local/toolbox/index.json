@@ -788,6 +788,48 @@
       },
       "replaces": null,
       "reuse_decision": "Original configuration of the inspected Eve rc.9 public sandbox API; fixes measured dev dependency mutation"
+    },
+    {
+      "id": "local-recovery-wrapper",
+      "purpose": "Own two pinned fixture processes, capture and validate a stopped bundle, and verify restored receipts.",
+      "kind": "code",
+      "location": "scripts/run-local-recovery.py",
+      "version": "0.1.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "local-recovery-verification"
+      ],
+      "input_contract": "Trusted indexed fixture, exact installed pins, two free ports, new private workspace, integer values and independent expected result, or an existing private bundle.",
+      "output_contract": "JSON status and evidence path for a full run. Read-only JSON status for bundle preflight. Nonzero on failure.",
+      "validation": {
+        "method": "Run the two-world recovery check in PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Reuse the pinned fixture, launch and reconciliation APIs; qualify existing behavior."
+    },
+    {
+      "id": "local-recovery-observer",
+      "purpose": "Observe actual SDK admission, origin-local reconciliation and original receipt continuity.",
+      "kind": "code",
+      "location": "scripts/check-local-recovery.mjs",
+      "version": "0.1.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "local-recovery-verification"
+      ],
+      "input_contract": "Wrapper-provided phase, owned listener ports, copied app path, synthetic auth, saved witness path and independent expected total.",
+      "output_contract": "Minimized original and restored facts, authoritative response observations and JSON verdict.",
+      "validation": {
+        "method": "Run the two-world recovery check in PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Reuse the pinned fixture, launch and reconciliation APIs; qualify existing behavior."
     }
   ]
 }

@@ -5,7 +5,7 @@
 
 A reusable Codex skill that turns a working method into a task agent: focused interview → playbook → reusable toolbox → bounded run → check → fix → saved playbook update → rerun.
 
-Version 0.4.1 selects a direct reusable prompt/tool call, a fixed workflow, or an observation-driven agent from task evidence. Known branch tables can remain fixed workflows. Full projects are created when useful.
+Version 0.4.2 selects a direct reusable prompt/tool call, a fixed workflow, or an observation-driven agent from task evidence. Known branch tables can remain fixed workflows. Full projects are created when useful.
 
 Agent Forge creates and maintains concrete agent projects. It uses the host's tools and current authorization for execution. Its Python helper scaffolds, searches and audits local artifacts. Scheduling and persistent execution require a supported host integration.
 
@@ -120,3 +120,7 @@ Build concrete runtime applications through [version-matched Eve guidance](agent
 Reuse the optional [transactional counter helper](agent-forge/references/concurrency.md) when a task fits its local resource contract. The expanded [Eve example](examples/eve-local/README.md) demonstrates real child sessions behind a shared admission gate, original-handle reconciliation, a browser client with session ownership, and server-turn cancellation. The dependency graph stays pinned during representative execution. These are verified local patterns, with a [remaining qualification plan](LIMITATIONS.md) for provider authentication, deployed cadence, replicated storage, isolation and migrations.
 
 In a comparable generated-agent run, 0.4.0 constructed a custom counter and 0.4.1 reused the bundled primitive. Both passed the same 19 independent checks and saved-method changed-input reruns. The benefit is reusable tested code; the single comparison does not establish better model quality or speed. See [verification](VERIFICATION.md) for the measured failures and repairs.
+
+## 0.4.2 local recovery qualification
+
+The optional [Eve example](examples/eve-local/README.md) now includes a reproducible two-process shared-admission test and a stopped complete-bundle restore with a read-only preflight. The baseline already passed these mechanics; the upgrade makes qualification reusable. See [verification](VERIFICATION.md) and the [remaining plan](LIMITATIONS.md).

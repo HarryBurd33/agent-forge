@@ -21,3 +21,25 @@ jobs:
       - run: python scripts/verify_release.py .
       - run: python -m unittest discover -s agent-forge/tests -v
       - run: python -m unittest discover -s tests -v
+  local-recovery:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+      - name: Install exact fixture dependencies
+        working-directory: examples/eve-local
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Qualify shared admission and stopped restoration
+        shell: bash
+        run: |
+          python3 examples/eve-local/scripts/run-local-recovery.py \
+            --dependencies "$GITHUB_WORKSPACE/examples/eve-local/node_modules" \
+            --work-dir "$RUNNER_TEMP/local-recovery" --ports 24781 24782 \
+            --values '[9,0,-4]' --expected 5 > "$RUNNER_TEMP/qualification.stdout" 2> "$RUNNER_TEMP/qualification.stderr"
+          python3 -c 'import json,os,pathlib; r=json.loads((pathlib.Path(os.environ["RUNNER_TEMP"])/"local-recovery/result.json").read_text()); print(json.dumps({k:r[k] for k in ("status","expected","versions")})); assert r["status"]=="passed"'
