@@ -36,3 +36,13 @@ Original local SQLite/subprocess fixtures and generated runners extend the prior
 
 ### 2026-11-11 concurrent qualification
 Existing pinned Anthropic/Hugging Face design findings and rights decisions remain applicable. Original Python standard-library task adapters and sanitized regression fixtures were constructed from the current MIT Agent Forge contracts. No upstream code, substantial prose, framework or runtime dependency was copied. Native dispatch/status tools were inspected and exercised on the available host; their observed behavior does not establish universal scheduling or process guarantees.
+
+## 0.4.0 runtime and code review sources — inspected 2026-11-12
+
+| Foundation | Inspected revision | Use |
+|---|---|---|
+| Vercel Build Agents and Eve skill contracts | Vercel plugin 0.54.1. Build Agents SHA-256 `334a5f42b57d7536fae1971191dce34ad47487a17f21cab1cc6709d4119203fb`. Eve skill SHA-256 `5e8f3f3d79569288918a31381301e55a9a686dc92ec053f10eb5eda93d58d037`. | Behavior and capability reference. Reuse rights for the skill texts were unverified. Agent Forge supplies original guidance. |
+| OpenAI Review Agent contract | Installed review-agent SKILL.md, SHA-256 `07079efd0dc76f05fade424e5dfb048dce1de2df7626e1a4f56292a4f3f92228`. No version field. | Behavior and output reference. Reuse rights for the skill text were unverified. The instructions and helper are original implementations. |
+| [Vercel Eve](https://github.com/vercel/eve) | `eve@1.0.0-rc.9`, commit `8a0b45010bcbc6e3cbae65ae01197d2667da19dc`. npm tarball SHA-256 `de3e0c2b755f097bfc1460d8c407ea0ba8ad6c00fd8bdc5a787ed1228da96840`. | Consult the package documentation and exported types for runtime work. An application can install Eve as an optional Apache-2.0 dependency. The MIT skill contains no Eve framework source. [Upstream license](https://github.com/vercel/eve/blob/8a0b45010bcbc6e3cbae65ae01197d2667da19dc/LICENSE) and [notices](https://github.com/vercel/eve/blob/8a0b45010bcbc6e3cbae65ae01197d2667da19dc/NOTICE). |
+
+The optional public `examples/eve-local` fixture contains original test logic and modified scaffold configuration. Its provenance file preserves Apache-2.0 terms/notices for the scaffold; installed dependencies are excluded. The skill itself remains original MIT work. Durable principles are versioned interfaces, actual observation and independent checks. Exact Eve APIs, paths, Node/CLI requirements and hosting mechanisms are dated implementation details and must be rechecked against the installed release.

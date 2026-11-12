@@ -70,5 +70,98 @@
     "total_tests": 38,
     "active_guard_negative_control": "expected_failure: extra reservation admitted after temporary < to <= mutation",
     "behavior_review": "Astra/Extra High accepted P1-P8 with evidence limits; final release acceptance separate"
+  },
+  "upgrade_0_4_0": {
+    "status": "executed_local_pass",
+    "date": "2026-11-12",
+    "python_tests": 45,
+    "review_helper_tests": 7,
+    "eve_version": "1.0.0-rc.9",
+    "strict_eve_eval_gates": 9,
+    "actual_model_runs": 5,
+    "review_defects_baseline": 2,
+    "review_defects_candidate": 2,
+    "direct_result": 13,
+    "runtime_actual_tool_results": [
+      13,
+      0,
+      7,
+      3
+    ],
+    "same_session_distinct_process_restart": true,
+    "raw_evidence": "Private; summarized in REPORT.md",
+    "limits": "Mock model; local ingress/idle restart; no provider/deployment/cadence/isolation claim",
+    "models": {
+      "baseline-review": {
+        "elapsed_seconds": 46.76056358299684,
+        "usage": [
+          {
+            "input_tokens": 191032,
+            "cached_input_tokens": 169984,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 1430,
+            "reasoning_output_tokens": 121
+          }
+        ],
+        "repository_unchanged": true,
+        "skill_sha256": "38b7ae61668a7299fd0f138d2847bad63623b14b267d1d19d61ae916b42478c6"
+      },
+      "baseline-routing": {
+        "elapsed_seconds": 50.05991354200523,
+        "usage": [
+          {
+            "input_tokens": 162539,
+            "cached_input_tokens": 119936,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 1569,
+            "reasoning_output_tokens": 283
+          }
+        ],
+        "repository_unchanged": true,
+        "skill_sha256": "38b7ae61668a7299fd0f138d2847bad63623b14b267d1d19d61ae916b42478c6"
+      },
+      "candidate-review": {
+        "elapsed_seconds": 43.03162608400453,
+        "usage": [
+          {
+            "input_tokens": 153723,
+            "cached_input_tokens": 133504,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 1265,
+            "reasoning_output_tokens": 63
+          }
+        ],
+        "repository_unchanged": true,
+        "skill_sha256": "c29785302a9f92ffba6d08e9dfce7098f0b0b2ce83337d5358657a578895636b"
+      },
+      "candidate-routing": {
+        "elapsed_seconds": 43.49254220799776,
+        "usage": [
+          {
+            "input_tokens": 167943,
+            "cached_input_tokens": 118400,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 1308,
+            "reasoning_output_tokens": 52
+          }
+        ],
+        "repository_unchanged": true,
+        "skill_sha256": "c29785302a9f92ffba6d08e9dfce7098f0b0b2ce83337d5358657a578895636b"
+      },
+      "candidate-version": {
+        "elapsed_seconds": 32.46086245897459,
+        "usage": [
+          {
+            "input_tokens": 157789,
+            "cached_input_tokens": 135808,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 806,
+            "reasoning_output_tokens": 0
+          }
+        ],
+        "repository_unchanged": true,
+        "skill_sha256": "c29785302a9f92ffba6d08e9dfce7098f0b0b2ce83337d5358657a578895636b"
+      }
+    }
   }
 }

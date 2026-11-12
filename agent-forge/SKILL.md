@@ -1,14 +1,20 @@
 ---
 name: agent-forge
-description: Build or repair task agents from a user's working method: interview, create an executable playbook and indexed toolbox, configure bounded execution or requested automation, and verify results. Use for explicit agent-building, agent automation, delegation or Agent Forge project changes. Do not turn ordinary task requests or incidental mentions of agents into a building interview.
+description: Build, configure, or repair task agents and agent apps, including durable, tool-calling, multi-agent, and scheduled apps. Create bounded playbooks and toolboxes, or perform a read-only review of a specified code change. Use for explicit agent-building, agent automation, delegation, Agent Forge projects, or code review. Skip incidental agent mentions.
 license: MIT
 metadata:
-  version: "0.3.3"
+  version: "0.4.0"
 ---
 
 # Agent Forge
 
 Turn work the user understands into a usable agent package, then improve it from observed results. The operating cycle is **playbook → run → check → fix → update playbook → rerun affected checks**. A skill file supplies instructions, not permanent background execution or unlimited authority.
+
+## Choose the task path
+
+- **Review a specified change.** For direct or delegated review of uncommitted changes, a base branch, a commit, or a custom scope, read [code review](references/code-review.md) and use its read-only procedure exclusively. Return findings to the requester. The build, repair, automation, and delegation steps below do not apply.
+- **Implement an agent application.** For an explicit design, scaffold, or implementation involving a runtime, use [runtime applications](references/runtime-apps.md). Preserve a chosen or established stack. Consider Eve for a new runtime-backed application with no framework decision. Start with the outcome, runtime requirements, and applicable bounds below, and proceed from a complete specification without an interview. Use the relevant Vercel Agent guidance for the Vercel product itself.
+- **Build or repair a task method.** Follow the workflow below. Use a direct prompt or tool when one step is sufficient, and preserve an existing fixed workflow when its stages are known. An incidental mention of an agent does not start either workflow.
 
 ## 1. Find the project and the real capabilities
 

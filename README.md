@@ -5,7 +5,7 @@
 
 A reusable Codex skill that turns a working method into a task agent: focused interview → playbook → reusable toolbox → bounded run → check → fix → saved playbook update → rerun.
 
-Version 0.3.3 selects a direct reusable prompt/tool call, a fixed workflow, or an observation-driven agent from task evidence. Known branch tables can remain fixed workflows. Full projects are created when useful.
+Version 0.4.0 selects a direct reusable prompt/tool call, a fixed workflow, or an observation-driven agent from task evidence. Known branch tables can remain fixed workflows. Full projects are created when useful.
 
 Agent Forge creates and maintains concrete agent projects. It uses the host's tools and current authorization for execution. Its Python helper scaffolds, searches and audits local artifacts. Scheduling and persistent execution require a supported host integration.
 
@@ -110,3 +110,7 @@ An unresolved lookup ends the current invocation while preserving a later author
 ## 0.3.3 concurrent delegation coverage
 
 This release adds actual concurrent task-child qualification and portable local protocol regressions. The 0.3.2 builder passed the new case, so operating instructions and helper behavior are unchanged. Two native children audited different source formats; the parent recomputed their results, retained a pending handle and enforced the shared dispatch bound. A saved-procedure follow-up changed the selected source while preserving prior artifacts. See the [validation report](agent-forge/validation/REPORT.md) for evidence and limits. The repository tests replay local subprocesses with synthetic host observations; they do not launch model agents or prove host-wide enforcement.
+
+## 0.4.0 applications and code review
+
+Build concrete runtime applications through [version-matched Eve guidance](agent-forge/references/runtime-apps.md), or perform a [read-only defect review](agent-forge/references/code-review.md) of uncommitted changes, a base branch, a commit or a custom scope. Agent Forge remains dependency-free; Eve is optional for generated applications. Try the [local synthetic fixture](examples/eve-local/README.md) for tools, skills, authenticated events, session restart, SDK streams and evals. Hosted integrations remain conditional on actual setup and verification. See [verification](VERIFICATION.md) for measured results and limits.
