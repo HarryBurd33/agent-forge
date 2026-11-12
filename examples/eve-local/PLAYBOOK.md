@@ -146,3 +146,31 @@ just-bash supplies a virtual filesystem for this local fixture. It provides neit
 The specialist mock uses a fresh one-message session per launch. After an interrupted step, Eve can assign a new call ID. Match the latest result for the actual scoped tool and validate it against that message's input; a literal original call-ID lookup ignored a successful recovery result and caused repeated work.
 
 One qualified same-version local test killed the owned Eve process after `scoped_total` started but before it settled, then resumed the same store without a new message. The original call was abandoned, one retry returned14, and the original parent integrated14 once. Readback returned that result from the same consumed reservation. Fresh inputs14 and7 then passed `check-delegation`. For a new deployment, separately reproduce the interruption boundary and inspect original session, delivery, call and ledger evidence. Pure tools may run again after interruption; protected effects need resource-side idempotency and authoritative reconciliation. Keep unresolved state consumed. Do not infer migrations or external-effect guarantees from this arithmetic fixture.
+
+## Qualify two local worlds and a stopped restore
+
+Use this optional check on a trusted copy of this pinned mock fixture. It needs Node 24, the lockfile's installed dependencies, and Python 3.9+ on macOS or Linux. Choose two free unprivileged loopback ports and a new private work directory outside the source and dependency trees. The wrapper creates all state there. It starts no provider calls and disables scheduled dispatch and CLI telemetry.
+
+Run the saved procedure with an independently computed total. The first invocation uses 13; the fresh changed-input run uses 7.
+
+```sh
+fixture_scratch=$(mktemp -d)
+python3 scripts/run-local-recovery.py --work-dir "$fixture_scratch/primary" \
+  --ports 24771 24772 --values '[4,0,9]' --expected 13
+python3 scripts/run-local-recovery.py --work-dir "$fixture_scratch/followup" \
+  --ports 24771 24772 --values '[2,0,5]' --expected 7
+```
+
+The wrapper resolves `node_modules` from the fixture by default. For a controlled comparison, `--source` selects a trusted, indexed copy of the same fixture and `--dependencies` selects a verified installed `node_modules` directory. The exact Eve, just-bash and Rolldown pins must match. Both local processes use separate app roots and workflow stores with the same absolute SQLite admission ledger. The SDK submits two calls at a shared barrier, checks one real scoped child and one denial, and checks zero, missing, depth and exhausted allowances, shared replay, and identity conflict. The foreign process can read the shared completed receipt. A foreign attempt to reconcile a pending receipt returns 202 without the origin's local history. The origin resolves its own original receipt.
+
+The wrapper stops and verifies both process groups and listeners before copying the complete local states and ledger family with the private origin map. It verifies the bundle, moves its stopped app and ledger directories into recoverable quarantine, reconstructs fresh directories at their original absolute paths, and starts both apps with new processes and `--resume`. It reads the original completed receipt and resolves an originally pending child from preserved history without a new message. The unresolved no-child intent remains consumed. It verifies original stream facts, ledger integrity and preserved accounting, then stops the restored processes.
+
+Successful qualification prints JSON with `status: "passed"` and an evidence path. A failed check exits nonzero and retains the work directory and any available receipts. The read-only bundle preflight can be run separately:
+
+```sh
+python3 scripts/run-local-recovery.py --verify-bundle "$fixture_scratch/primary/bundle"
+```
+
+Preflight verifies source pins, required state and the content manifest without launching either process. A missing or changed bundle exits 2 and identifies the error. For a full run, inspect `result.json`, the original and restored witness files, the stopped process records, and the checksum manifest. The work directory contains private runtime state and logs. Keep it outside the source export. The archive checksum detects accidental corruption and needs a trusted manifest for authenticity.
+
+This checks two independent local Eve worlds sharing admission state. History still belongs to its original world. Restoration covers a stopped, same-version bundle at the same absolute paths. The procedure does not exercise a live backup, relocated snapshots, cross-host failover, a version upgrade, or external-effect exactly-once behavior.

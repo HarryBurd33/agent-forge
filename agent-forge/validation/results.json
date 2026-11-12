@@ -130,7 +130,7 @@
     "live process fencing",
     "non-Codex host"
   ],
-  "current_version": "0.3.3",
+  "current_version": "0.4.2",
   "upgrade_0_3_0": {
     "version": "0.3.0",
     "date": "2026-11-08",
@@ -281,12 +281,13 @@
   },
   "record_scope": "Top-level version/date/cases/unexecuted describe the historical0.1.0 evaluation. Dated upgrade sections record later evidence; current_unverified lists remaining boundaries.",
   "current_unverified": [
-    "production provider semantics",
-    "host-wide or distributed fencing and hostile isolation",
-    "event subscriptions on this desktop host",
-    "exact timer cadence or indefinite reliability",
-    "other hosts/devices and arbitrary domain accuracy",
-    "simultaneous model inference, latency advantage and per-task cost"
+    "cross-host replication",
+    "live backup",
+    "relocation",
+    "migration",
+    "native isolation",
+    "production identity/provider/cadence",
+    "external-effect commit guarantees"
   ],
   "upgrade_0_3_3": {
     "date": "2026-11-11",
@@ -501,5 +502,39 @@
       ],
       "scope": "one local mock runtime crash boundary; not external exactly-once or migration qualification"
     }
+  },
+  "upgrade_0_4_2": {
+    "status": "passed_local_qualification",
+    "scope": "Reusable qualification procedure; baseline already passed; no model-quality gain",
+    "baseline_total": 13,
+    "candidate_totals": [
+      13,
+      7,
+      5
+    ],
+    "actual_runtime_processes_per_positive_run": 4,
+    "shared_last_slot_children": 1,
+    "complete_stopped_restore": true,
+    "prior_histories_unchanged": true,
+    "unresolved_reservation_consumed": true,
+    "negative_controls": [
+      "removed admission guard rejected",
+      "missing ledger rejected",
+      "altered origin map rejected",
+      "mixed verify mode rejected"
+    ],
+    "python_tests": 49,
+    "strict_eve_eval_gates": 9,
+    "native_invocation": "separate delivery gate",
+    "provider_cost": null,
+    "remaining": [
+      "cross-host replication",
+      "live backup",
+      "relocation",
+      "migration",
+      "native isolation",
+      "production identity/provider/cadence",
+      "external-effect commit guarantees"
+    ]
   }
 }

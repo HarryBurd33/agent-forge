@@ -171,5 +171,39 @@
     "generated_arms": 2,
     "child_and_browser": "Actual runtime, native browser and independent retained review",
     "dependency_mutation_repair": "Explicit pinned local provider; missingdependency refusal and sourcehash equality"
+  },
+  "upgrade_0_4_2": {
+    "status": "passed_local_qualification",
+    "scope": "Reusable qualification procedure; baseline already passed; no model-quality gain",
+    "baseline_total": 13,
+    "candidate_totals": [
+      13,
+      7,
+      5
+    ],
+    "actual_runtime_processes_per_positive_run": 4,
+    "shared_last_slot_children": 1,
+    "complete_stopped_restore": true,
+    "prior_histories_unchanged": true,
+    "unresolved_reservation_consumed": true,
+    "negative_controls": [
+      "removed admission guard rejected",
+      "missing ledger rejected",
+      "altered origin map rejected",
+      "mixed verify mode rejected"
+    ],
+    "python_tests": 49,
+    "strict_eve_eval_gates": 9,
+    "native_invocation": "separate delivery gate",
+    "provider_cost": null,
+    "remaining": [
+      "cross-host replication",
+      "live backup",
+      "relocation",
+      "migration",
+      "native isolation",
+      "production identity/provider/cadence",
+      "external-effect commit guarantees"
+    ]
   }
 }

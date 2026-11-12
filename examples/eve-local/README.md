@@ -9,3 +9,5 @@ See [provenance](NOTICE.md) and the repository [validation report](../../agent-f
 The same playbook includes the shared SQLite launch budget, one declared mock child, and verification of the original child receipt after an uncertain return. The fixture uses one trusted local ledger and a synthetic bearer identity.
 
 The optional local browser client qualifies authenticated session ownership, display reconnect, and server-turn cancellation. Follow `check-browser` in the playbook. It uses synthetic identities and a single loopback gateway; production authentication and replicated ownership require separate verification.
+
+The optional [two-world recovery check](PLAYBOOK.md#qualify-two-local-worlds-and-a-stopped-restore) runs two actual local Eve processes against one SQLite admission ledger, then verifies a stopped bundle restored at the same paths. The wrapper also provides read-only bundle verification.
