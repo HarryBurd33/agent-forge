@@ -205,5 +205,31 @@
       "production identity/provider/cadence",
       "external-effect commit guarantees"
     ]
+  },
+  "upgrade_0_4_3": {
+    "status": "passed_local_qualification",
+    "baseline_same_owner_second_gateway": 403,
+    "candidate_same_owner_second_gateway": 200,
+    "candidate_totals": [
+      13,
+      7
+    ],
+    "independent_actual_browser_total": 9,
+    "actual_browser_cancelled": true,
+    "ownership_capacity": 256,
+    "uncertain_creation_retains_pending": true,
+    "complete_stopped_restore": true,
+    "python_tests": 49,
+    "strict_eve_eval_gates": 9,
+    "native_invocation": "separate delivery gate",
+    "provider_cost": null,
+    "remaining": [
+      "production identity and expiry",
+      "cross-host replication",
+      "live backup",
+      "relocation and migration",
+      "native isolation",
+      "external-effect atomicity"
+    ]
   }
 }

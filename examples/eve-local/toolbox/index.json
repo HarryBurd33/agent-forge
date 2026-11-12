@@ -673,14 +673,15 @@
     },
     {
       "id": "browser-gateway",
-      "purpose": "Enforce owner access and forward only the loopback fixture routes",
+      "purpose": "Forward authorized browser requests using a shared local ownership store and separate backend bearer",
       "kind": "code",
       "location": "browser/serve.mjs",
       "version": "0.2.0",
       "dependencies": [
         "browser-ui-html",
         "browser-build",
-        "sdk-route"
+        "sdk-route",
+        "browser-ownership-store"
       ],
       "status": "draft",
       "used_by": [
@@ -830,6 +831,74 @@
       },
       "replaces": null,
       "reuse_decision": "Reuse the pinned fixture, launch and reconciliation APIs; qualify existing behavior."
+    },
+    {
+      "id": "browser-ownership-store",
+      "purpose": "Explicitly initialize, inspect and attach the versioned shared ownership database",
+      "kind": "code",
+      "location": "browser/ownership.mjs",
+      "version": "0.1.0",
+      "dependencies": [],
+      "status": "draft",
+      "used_by": [
+        "browser-ownership-qualification"
+      ],
+      "input_contract": "Absolute canonical private SQLite path and synthetic principal/session identifiers",
+      "output_contract": "Readiness counts, durable reservation, immutable ownership, or error",
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Extend the pinned local gateway and reuse its existing runtime, UI and credential boundary"
+    },
+    {
+      "id": "browser-ownership-checker",
+      "purpose": "Observe actual cross-gateway authorization, cursor, cancellation and same-history restore",
+      "kind": "code",
+      "location": "browser/check-ownership.mjs",
+      "version": "0.1.0",
+      "dependencies": [
+        "browser-gateway"
+      ],
+      "status": "draft",
+      "used_by": [
+        "browser-ownership-qualification"
+      ],
+      "input_contract": "Fixture process topology, synthetic credentials, values and independent total",
+      "output_contract": "Minimized HTTP/SDK observations and verdict",
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Extend the pinned local gateway and reuse its existing runtime, UI and credential boundary"
+    },
+    {
+      "id": "browser-ownership-qualifier",
+      "purpose": "Own local processes and qualify stopped shared ownership restore",
+      "kind": "code",
+      "location": "scripts/run-browser-ownership.py",
+      "version": "0.1.0",
+      "dependencies": [
+        "browser-ownership-checker",
+        "browser-ownership-store"
+      ],
+      "status": "draft",
+      "used_by": [
+        "browser-ownership-qualification"
+      ],
+      "input_contract": "Pinned source and installed dependencies, three free loopback ports, fresh private workspace, bounded values and expected total",
+      "output_contract": "Source, process, bundle, SQL and observer evidence, or bounded failure",
+      "validation": {
+        "method": "Follow PLAYBOOK.md",
+        "evidence": [],
+        "bindings": []
+      },
+      "replaces": null,
+      "reuse_decision": "Extend the pinned local gateway and reuse its existing runtime, UI and credential boundary"
     }
   ]
 }

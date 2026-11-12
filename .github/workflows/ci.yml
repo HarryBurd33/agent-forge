@@ -43,3 +43,11 @@ jobs:
             --work-dir "$RUNNER_TEMP/local-recovery" --ports 24781 24782 \
             --values '[9,0,-4]' --expected 5 > "$RUNNER_TEMP/qualification.stdout" 2> "$RUNNER_TEMP/qualification.stderr"
           python3 -c 'import json,os,pathlib; r=json.loads((pathlib.Path(os.environ["RUNNER_TEMP"])/"local-recovery/result.json").read_text()); print(json.dumps({k:r[k] for k in ("status","expected","versions")})); assert r["status"]=="passed"'
+      - name: Qualify shared browser ownership and stopped restoration
+        shell: bash
+        run: |
+          python3 examples/eve-local/scripts/run-browser-ownership.py \
+            --dependencies "$GITHUB_WORKSPACE/examples/eve-local/node_modules" \
+            --work-dir "$RUNNER_TEMP/browser-ownership" --ports 24783 24784 24785 \
+            --values '[11,0,-2]' --expected 9 > "$RUNNER_TEMP/browser-ownership.stdout" 2> "$RUNNER_TEMP/browser-ownership.stderr"
+          python3 -c 'import json,os,pathlib; r=json.loads((pathlib.Path(os.environ["RUNNER_TEMP"])/"browser-ownership/result.json").read_text()); print(json.dumps({k:r[k] for k in ("status","mode")})); assert r["status"]=="passed"'
